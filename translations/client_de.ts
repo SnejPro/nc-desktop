@@ -417,12 +417,12 @@ macOS kann diese Anforderung ignorieren oder verzögern.</translation>
 <context>
     <name>FileSystem</name>
     <message>
-        <location filename="../src/libsync/filesystem.cpp" line="288"/>
+        <location filename="../src/libsync/filesystem.cpp" line="285"/>
         <source>Error removing &quot;%1&quot;: %2</source>
         <translation>Fehler beim Entfernen &quot;%1&quot;: %2</translation>
     </message>
     <message>
-        <location filename="../src/libsync/filesystem.cpp" line="308"/>
+        <location filename="../src/libsync/filesystem.cpp" line="305"/>
         <source>Could not remove folder &quot;%1&quot;</source>
         <translation>Der Ordner &quot;%1&quot; konnte nicht gelöscht werden</translation>
     </message>
@@ -525,17 +525,17 @@ macOS kann diese Anforderung ignorieren oder verzögern.</translation>
 <context>
     <name>OCC::Account</name>
     <message>
-        <location filename="../src/libsync/account.cpp" line="1013"/>
+        <location filename="../src/libsync/account.cpp" line="1018"/>
         <source>File %1 is already locked by %2.</source>
         <translation>Datei %1 ist bereits von %2 gesperrt.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/account.cpp" line="1015"/>
+        <location filename="../src/libsync/account.cpp" line="1020"/>
         <source>Lock operation on %1 failed with error %2</source>
         <translation>Das Sperren von %1 ist mit Fehler %2 fehlgeschlagen</translation>
     </message>
     <message>
-        <location filename="../src/libsync/account.cpp" line="1017"/>
+        <location filename="../src/libsync/account.cpp" line="1022"/>
         <source>Unlock operation on %1 failed with error %2</source>
         <translation>Das Entsperren von %1 ist mit Fehler %2 fehlgeschlagen</translation>
     </message>
@@ -1273,58 +1273,58 @@ Diese Aktion bricht jede derzeit laufende Synchronisierung ab.</translation>
 <context>
     <name>OCC::BulkPropagatorJob</name>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="123"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="150"/>
         <source>File %1 cannot be uploaded because another file with the same name, differing only in case, exists</source>
         <translation>Die Datei %1 kann nicht hochgeladen werden, da eine andere Datei mit demselben Namen, nur unterschiedlicher Groß-/Kleinschreibung, existiert</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="175"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="209"/>
         <source>File %1 has invalid modified time. Do not upload to the server.</source>
         <translation>Die Datei %1 hat eine ungültige Änderungszeit. Nicht auf den Server hochladen.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="296"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="361"/>
         <source>File Removed (start upload) %1</source>
         <translation>Datei entfernt (starte das Hochladen) %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="308"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="380"/>
         <source>File %1 has invalid modification time. Do not upload to the server.</source>
         <translation>Die Datei %1 hat eine ungültige Änderungszeit. Nicht auf den Server hochladen.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="320"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="393"/>
         <source>Local file changed during syncing. It will be resumed.</source>
         <translation>Lokale Datei hat sich während der Synchronisierung geändert. Die Synchronisierung wird wieder aufgenommen.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="334"/>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="678"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="407"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="754"/>
         <source>Local file changed during sync.</source>
         <translation>Lokale Datei wurde während der Synchronisierung geändert.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="441"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="517"/>
         <source>Network error: %1</source>
         <translation>Netzwerkfehler: %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="487"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="563"/>
         <source>Error updating metadata: %1</source>
         <translation>Fehler beim Aktualisieren der Metadaten: %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="490"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="566"/>
         <source>The file %1 is currently in use</source>
         <translation>Die Datei %1 wird aktuell verwendet</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="660"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="736"/>
         <source>The local file was removed during sync.</source>
         <translation>Die lokale Datei wurde während der Synchronisierung gelöscht.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="708"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="784"/>
         <source>Restoration failed: %1</source>
         <translation>Wiederherstellung fehlgeschlagen: %1</translation>
     </message>
@@ -1482,7 +1482,7 @@ Diese Aktion bricht jede derzeit laufende Synchronisierung ab.</translation>
 <context>
     <name>OCC::CleanupPollsJob</name>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1729"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1710"/>
         <source>Error writing metadata to the database</source>
         <translation>Fehler beim Schreiben der Metadaten in die Datenbank</translation>
     </message>
@@ -3727,8 +3727,8 @@ Beachten Sie, dass die Verwendung von Befehlszeilenoptionen für die Protokollie
 <context>
     <name>OCC::OwncloudPropagator</name>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="939"/>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1016"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="937"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1014"/>
         <source>Impossible to get modification time for file in conflict %1</source>
         <translation>Es ist nicht möglich, die Änderungszeit für die in Konflikt stehende Datei abzurufen %1</translation>
     </message>
@@ -3983,7 +3983,7 @@ Dies ist ein neuer, experimenteller Modus. Wenn Sie sich entscheiden, ihn zu ver
 <context>
     <name>OCC::PollJob</name>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="140"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="149"/>
         <source>Invalid JSON reply from the poll URL</source>
         <translation>Ungültige JSON-Antwort von der Poll-URL</translation>
     </message>
@@ -4137,64 +4137,64 @@ Dies ist ein neuer, experimenteller Modus. Wenn Sie sich entscheiden, ihn zu ver
         <translation>Server meldet keine %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1126"/>
+        <location filename="../src/libsync/discovery.cpp" line="1127"/>
         <source>Cannot sync due to invalid modification time</source>
         <translation>Synchronisierung wegen ungültiger Änderungszeit nicht möglich</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1136"/>
+        <location filename="../src/libsync/discovery.cpp" line="1137"/>
         <source>Could not upload file, because it is open in &quot;%1&quot;.</source>
         <translation>Datei konnte nicht hochgeladen werden, da sie in &quot;%1&quot; geöffnet ist.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1179"/>
+        <location filename="../src/libsync/discovery.cpp" line="1180"/>
         <source>Error while deleting file record %1 from the database</source>
         <translation>Fehler beim Löschen des Dateisatzes %1 aus der Datenbank</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1457"/>
-        <location filename="../src/libsync/discovery.cpp" line="1915"/>
+        <location filename="../src/libsync/discovery.cpp" line="1458"/>
+        <location filename="../src/libsync/discovery.cpp" line="1916"/>
         <source>Moved to invalid target, restoring</source>
         <translation>Auf ungültiges Ziel verschoben, wiederherstellen.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1775"/>
+        <location filename="../src/libsync/discovery.cpp" line="1776"/>
         <source>Cannot modify encrypted item because the selected certificate is not valid.</source>
         <translation>Das verschlüsselte Element kann nicht geändert werden, da das ausgewählte Zertifikat nicht gültig ist.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1837"/>
+        <location filename="../src/libsync/discovery.cpp" line="1838"/>
         <source>Ignored because of the &quot;choose what to sync&quot; blacklist</source>
         <translation>Ignoriert wegen der &quot;Choose what to sync&quot;-Blacklist</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1871"/>
-        <location filename="../src/libsync/discovery.cpp" line="2076"/>
+        <location filename="../src/libsync/discovery.cpp" line="1872"/>
+        <location filename="../src/libsync/discovery.cpp" line="2077"/>
         <source>Not allowed because you don&apos;t have permission to add subfolders to that folder</source>
         <translation>Nicht erlaubt, da Sie nicht die Berechtigung haben, Unterordner zu diesem Ordner hinzuzufügen.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1879"/>
+        <location filename="../src/libsync/discovery.cpp" line="1880"/>
         <source>Not allowed because you don&apos;t have permission to add files in that folder</source>
         <translation>Nicht erlaubt, da Sie keine Berechtigung zum Hinzufügen von Dateien in diesen Ordner haben.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1893"/>
+        <location filename="../src/libsync/discovery.cpp" line="1894"/>
         <source>Not allowed to upload this file because it is read-only on the server, restoring</source>
         <translation>Das Hochladen dieser Datei ist nicht erlaubt, da die Datei auf dem Server schreibgeschützt ist. Wiederherstellen.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1929"/>
+        <location filename="../src/libsync/discovery.cpp" line="1930"/>
         <source>Not allowed to remove, restoring</source>
         <translation>Entfernen nicht erlaubt, wiederherstellen.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="2120"/>
+        <location filename="../src/libsync/discovery.cpp" line="2121"/>
         <source>Error while reading the database</source>
         <translation>Fehler beim Lesen der Datenbank</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="2205"/>
+        <location filename="../src/libsync/discovery.cpp" line="2206"/>
         <source>Server replied with an error while reading directory &quot;%1&quot; : %2</source>
         <translation>Der Server hat während des Lesens des Verzeichnisses &quot;%1&quot; mit einem Fehler geantwortet: %2</translation>
     </message>
@@ -4202,38 +4202,38 @@ Dies ist ein neuer, experimenteller Modus. Wenn Sie sich entscheiden, ihn zu ver
 <context>
     <name>OCC::PropagateDirectory</name>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1439"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1420"/>
         <source>Could not delete file %1 from local DB</source>
         <translation>Datei %1 konnte nicht aus der lokalen Datenbank gelöscht werden</translation>
     </message>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1453"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1434"/>
         <source>Error updating metadata due to invalid modification time</source>
         <translation>Fehler beim Aktualisieren der Metadaten aufgrund einer ungültigen Änderungszeit</translation>
     </message>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1483"/>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1489"/>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1495"/>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1517"/>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1523"/>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1529"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1464"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1470"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1476"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1498"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1504"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1510"/>
         <source>The folder %1 cannot be made read-only: %2</source>
         <translation>Der Ordner %1 kann nicht schreibgeschützt werden: %2</translation>
     </message>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1495"/>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1529"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1476"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1510"/>
         <source>unknown exception</source>
         <translation>Unbekannter Ausnahmefehler</translation>
     </message>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1539"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1520"/>
         <source>Error updating metadata: %1</source>
         <translation>Fehler beim Aktualisieren der Metadaten: %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1543"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1524"/>
         <source>File is currently in use</source>
         <translation>Datei ist aktuell in Benutzung</translation>
     </message>
@@ -4532,60 +4532,60 @@ Dies ist ein neuer, experimenteller Modus. Wenn Sie sich entscheiden, ihn zu ver
 <context>
     <name>OCC::PropagateUploadFileCommon</name>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="243"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="252"/>
         <source>Failed to upload encrypted file.</source>
         <translation>Das Hochladen der verschlüsselten Datei ist fehlgeschlagen.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="278"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="287"/>
         <source>File %1 cannot be uploaded because another file with the same name, differing only in case, exists</source>
         <translation>Die Datei %1 kann nicht hochgeladen werden, da eine andere Datei mit dem selben Namen, nur unterschiedlicher Groß-/Kleinschreibung, existiert</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="289"/>
-        <location filename="../src/libsync/propagateupload.cpp" line="713"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="298"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="729"/>
         <source>Upload of %1 exceeds the quota for the folder</source>
         <translation>Das Hochladen von %1 überschreitet das Speicherkontingent des Ordners </translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="327"/>
-        <location filename="../src/libsync/propagateupload.cpp" line="402"/>
-        <location filename="../src/libsync/propagateupload.cpp" line="415"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="342"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="418"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="431"/>
         <source>File %1 has invalid modification time. Do not upload to the server.</source>
         <translation>Die Datei %1 hat eine ungültige Änderungszeit. Nicht auf den Server hochladen.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="399"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="415"/>
         <source>File Removed (start upload) %1</source>
         <translation>Datei entfernt (starte Hochladen) %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="425"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="441"/>
         <source>Local file changed during syncing. It will be resumed.</source>
         <translation>Lokale Datei hat sich während der Synchronisierung geändert. Die Synchronisierung wird wiederaufgenommen.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="436"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="452"/>
         <source>Local file changed during sync.</source>
         <translation>Eine lokale Datei wurde während der Synchronisierung geändert.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="446"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="462"/>
         <source>Failed to unlock encrypted folder.</source>
         <translation>Der verschlüsselte Ordner konnte nicht entsperrt werden.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="719"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="735"/>
         <source>Unable to upload an item with invalid characters</source>
         <translation>Ein Element mit ungültigen Zeichen kann nicht hochgeladen werden</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="821"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="837"/>
         <source>Error updating metadata: %1</source>
         <translation>Fehler beim Aktualisieren der Metadaten: %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="824"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="840"/>
         <source>The file %1 is currently in use</source>
         <translation>Die Datei %1 ist aktuell in Benutzung</translation>
     </message>
@@ -5208,68 +5208,68 @@ Server antwortete mit Fehler: %2</translation>
         <translation>%1 (übersprungen aufgrund des früheren Fehlers, erneuter Versuch in %2)</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="384"/>
+        <location filename="../src/libsync/syncengine.cpp" line="383"/>
         <source>Could not update file: %1</source>
         <translation>Datei konnte nicht aktualisiert werden: %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="413"/>
+        <location filename="../src/libsync/syncengine.cpp" line="412"/>
         <source>Could not update virtual file metadata: %1</source>
         <translation>Metadaten der virtuellen Datei konnten nicht aktualisiert werden: %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="420"/>
+        <location filename="../src/libsync/syncengine.cpp" line="419"/>
         <source>Could not update file metadata: %1</source>
         <translation>Die Metadaten der Datei konnten nicht aktualisiert werden: %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="434"/>
+        <location filename="../src/libsync/syncengine.cpp" line="433"/>
         <source>Could not set file record to local DB: %1</source>
         <translation>Dateidatensatz konnte nicht auf lokale DB gesetzt werden: %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="466"/>
+        <location filename="../src/libsync/syncengine.cpp" line="465"/>
         <source>Unresolved conflict.</source>
         <translation>Ungelöster Konflikt.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="568"/>
+        <location filename="../src/libsync/syncengine.cpp" line="567"/>
         <source>Only %1 are available, need at least %2 to start</source>
         <comment>Placeholders are postfixed with file sizes using Utility::octetsToString()</comment>
         <translation>Nur %1 sind verfügbar. Zum Beginnen werden mindestens %2 benötigt.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="601"/>
+        <location filename="../src/libsync/syncengine.cpp" line="600"/>
         <source>Unable to open or create the local sync database. Make sure you have write access in the sync folder.</source>
         <translation>Öffnen oder erstellen der Sync-Datenbank nicht möglich. Bitte sicherstellen, dass Schreibrechte für den zu synchronisierenden Ordner existieren.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="617"/>
+        <location filename="../src/libsync/syncengine.cpp" line="616"/>
         <source>Using virtual files with suffix, but suffix is not set</source>
         <translation>Virtuelle Dateien mit Endung verwenden, aber Endung ist nicht gesetzt.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="629"/>
+        <location filename="../src/libsync/syncengine.cpp" line="628"/>
         <source>Unable to read the blacklist from the local database</source>
         <translation>Fehler beim Einlesen der Blacklist aus der lokalen Datenbank</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="669"/>
+        <location filename="../src/libsync/syncengine.cpp" line="668"/>
         <source>Unable to read from the sync journal.</source>
         <translation>Fehler beim Einlesen des Synchronisierungsprotokolls.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="825"/>
+        <location filename="../src/libsync/syncengine.cpp" line="824"/>
         <source>Cannot open the sync journal</source>
         <translation>Synchronisierungsprotokoll kann nicht geöffnet werden</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="1428"/>
+        <location filename="../src/libsync/syncengine.cpp" line="1427"/>
         <source>Disk space is low: Downloads that would reduce free space below %1 were skipped.</source>
         <translation>Der freie Speicherplatz wird knapp: Downloads, die den freien Speicher unter %1 reduzieren, wurden ausgelassen.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="1435"/>
+        <location filename="../src/libsync/syncengine.cpp" line="1434"/>
         <source>There is insufficient space available on the server for some uploads.</source>
         <translation>Auf dem Server ist für einige Dateien zum Hochladen nicht genug Platz.</translation>
     </message>
@@ -6076,12 +6076,12 @@ Server antwortete mit Fehler: %2</translation>
     <message>
         <location filename="../src/common/filesystembase.cpp" line="596"/>
         <source>File is already deleted</source>
-        <translation type="unfinished"/>
+        <translation>Datei ist bereits gelöscht</translation>
     </message>
     <message>
         <location filename="../src/common/filesystembase.cpp" line="611"/>
         <source>Error deleting the file</source>
-        <translation type="unfinished"/>
+        <translation>Fehler beim Löschen der Datei</translation>
     </message>
     <message numerus="yes">
         <location filename="../src/common/utility.cpp" line="440"/>

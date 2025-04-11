@@ -417,12 +417,12 @@ macOS може да закасни или да игнорише овај зах�
 <context>
     <name>FileSystem</name>
     <message>
-        <location filename="../src/libsync/filesystem.cpp" line="288"/>
+        <location filename="../src/libsync/filesystem.cpp" line="285"/>
         <source>Error removing &quot;%1&quot;: %2</source>
         <translation>Грешка приликом уклањања „%1”: %2</translation>
     </message>
     <message>
-        <location filename="../src/libsync/filesystem.cpp" line="308"/>
+        <location filename="../src/libsync/filesystem.cpp" line="305"/>
         <source>Could not remove folder &quot;%1&quot;</source>
         <translation>Не може да се уклони фолдер „%1”</translation>
     </message>
@@ -525,17 +525,17 @@ macOS може да закасни или да игнорише овај зах�
 <context>
     <name>OCC::Account</name>
     <message>
-        <location filename="../src/libsync/account.cpp" line="1013"/>
+        <location filename="../src/libsync/account.cpp" line="1018"/>
         <source>File %1 is already locked by %2.</source>
         <translation>%2 је већ закључао фајл %1.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/account.cpp" line="1015"/>
+        <location filename="../src/libsync/account.cpp" line="1020"/>
         <source>Lock operation on %1 failed with error %2</source>
         <translation>Операција закључавања %1 није успела услед грешке %2</translation>
     </message>
     <message>
-        <location filename="../src/libsync/account.cpp" line="1017"/>
+        <location filename="../src/libsync/account.cpp" line="1022"/>
         <source>Unlock operation on %1 failed with error %2</source>
         <translation>Операција откључавања %1 није успела услед грешке %2</translation>
     </message>
@@ -1274,58 +1274,58 @@ This action will abort any currently running synchronization.</source>
 <context>
     <name>OCC::BulkPropagatorJob</name>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="123"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="150"/>
         <source>File %1 cannot be uploaded because another file with the same name, differing only in case, exists</source>
         <translation>Фајл %1 не може да се отпреми јер постоји фајл са истим именом али различитом величином слова</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="175"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="209"/>
         <source>File %1 has invalid modified time. Do not upload to the server.</source>
         <translation>Фајл %1 има неисправно време измене. Не отпремајте га на сервер.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="296"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="361"/>
         <source>File Removed (start upload) %1</source>
         <translation>Фајл је обрисан (почиње отпремање) %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="308"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="380"/>
         <source>File %1 has invalid modification time. Do not upload to the server.</source>
         <translation>Фајл %1 има неисправно време измене. Не отпремајте га на сервер.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="320"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="393"/>
         <source>Local file changed during syncing. It will be resumed.</source>
         <translation>Локални фајл се изменио током синхронизације. Наставиће се.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="334"/>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="678"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="407"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="754"/>
         <source>Local file changed during sync.</source>
         <translation>Локални фајл се изменио током синхронизације.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="441"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="517"/>
         <source>Network error: %1</source>
         <translation>Мрежна грешка: %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="487"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="563"/>
         <source>Error updating metadata: %1</source>
         <translation>Грешка приликом ажурирања метаподатака: %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="490"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="566"/>
         <source>The file %1 is currently in use</source>
         <translation>Фајл %1 се тренутно користи</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="660"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="736"/>
         <source>The local file was removed during sync.</source>
         <translation>Локални фајл је обрисан током синхронизације.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="708"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="784"/>
         <source>Restoration failed: %1</source>
         <translation>Није успело обнављање: %1</translation>
     </message>
@@ -1483,7 +1483,7 @@ This action will abort any currently running synchronization.</source>
 <context>
     <name>OCC::CleanupPollsJob</name>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1729"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1710"/>
         <source>Error writing metadata to the database</source>
         <translation>Грешка приликом уписивања метаподатака у базу</translation>
     </message>
@@ -3729,8 +3729,8 @@ Note that using any logging command line options will override this setting.</so
 <context>
     <name>OCC::OwncloudPropagator</name>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="939"/>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1016"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="937"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1014"/>
         <source>Impossible to get modification time for file in conflict %1</source>
         <translation>Немогуће је добити време измене за фајл у конфликту %1</translation>
     </message>
@@ -3985,7 +3985,7 @@ This is a new, experimental mode. If you decide to use it, please report any iss
 <context>
     <name>OCC::PollJob</name>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="140"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="149"/>
         <source>Invalid JSON reply from the poll URL</source>
         <translation>Неисправан ЈСОН одговор са адресе упита</translation>
     </message>
@@ -4139,64 +4139,64 @@ This is a new, experimental mode. If you decide to use it, please report any iss
         <translation>Сервер је пријавио да нема %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1126"/>
+        <location filename="../src/libsync/discovery.cpp" line="1127"/>
         <source>Cannot sync due to invalid modification time</source>
         <translation>Не може да се синхронизује због неисправног времена измене</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1136"/>
+        <location filename="../src/libsync/discovery.cpp" line="1137"/>
         <source>Could not upload file, because it is open in &quot;%1&quot;.</source>
         <translation>Фајл не може да се отпреми јер је отворен у „%1”.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1179"/>
+        <location filename="../src/libsync/discovery.cpp" line="1180"/>
         <source>Error while deleting file record %1 from the database</source>
         <translation>Грешка приликом брисања фајл записа %1 из базе података</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1457"/>
-        <location filename="../src/libsync/discovery.cpp" line="1915"/>
+        <location filename="../src/libsync/discovery.cpp" line="1458"/>
+        <location filename="../src/libsync/discovery.cpp" line="1916"/>
         <source>Moved to invalid target, restoring</source>
         <translation>Премештено на неисправан циљ, враћа се</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1775"/>
+        <location filename="../src/libsync/discovery.cpp" line="1776"/>
         <source>Cannot modify encrypted item because the selected certificate is not valid.</source>
         <translation>Шифрована ставка не може да се измени јер изабрани сертификат није исправан.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1837"/>
+        <location filename="../src/libsync/discovery.cpp" line="1838"/>
         <source>Ignored because of the &quot;choose what to sync&quot; blacklist</source>
         <translation>Игнорисано јер се не налази на листи за синхронизацију</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1871"/>
-        <location filename="../src/libsync/discovery.cpp" line="2076"/>
+        <location filename="../src/libsync/discovery.cpp" line="1872"/>
+        <location filename="../src/libsync/discovery.cpp" line="2077"/>
         <source>Not allowed because you don&apos;t have permission to add subfolders to that folder</source>
         <translation>Није дозвољено пошто немате дозволу да додате подфолдере у овај фолдер</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1879"/>
+        <location filename="../src/libsync/discovery.cpp" line="1880"/>
         <source>Not allowed because you don&apos;t have permission to add files in that folder</source>
         <translation>Није дозвољено пошто немате дозволу да додате фајлове у овај фолдер</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1893"/>
+        <location filename="../src/libsync/discovery.cpp" line="1894"/>
         <source>Not allowed to upload this file because it is read-only on the server, restoring</source>
         <translation>Није дозвољено да отпремите овај фајл јер је на серверу означен као само-за-читање. Враћа се</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1929"/>
+        <location filename="../src/libsync/discovery.cpp" line="1930"/>
         <source>Not allowed to remove, restoring</source>
         <translation>Није дозвољено брисање, враћа се</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="2120"/>
+        <location filename="../src/libsync/discovery.cpp" line="2121"/>
         <source>Error while reading the database</source>
         <translation>Грешка приликом читања базе података</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="2205"/>
+        <location filename="../src/libsync/discovery.cpp" line="2206"/>
         <source>Server replied with an error while reading directory &quot;%1&quot; : %2</source>
         <translation>Сервер је одговорио са грешком током читања директоријума „%1” : %2</translation>
     </message>
@@ -4204,38 +4204,38 @@ This is a new, experimental mode. If you decide to use it, please report any iss
 <context>
     <name>OCC::PropagateDirectory</name>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1439"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1420"/>
         <source>Could not delete file %1 from local DB</source>
         <translation>Фајл %1 не може да се обрише из локалне базе</translation>
     </message>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1453"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1434"/>
         <source>Error updating metadata due to invalid modification time</source>
         <translation>Грешка приликом ажурирања метаподатака услед неисправног времена измене</translation>
     </message>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1483"/>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1489"/>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1495"/>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1517"/>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1523"/>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1529"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1464"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1470"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1476"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1498"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1504"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1510"/>
         <source>The folder %1 cannot be made read-only: %2</source>
         <translation>Фолдер %1 не може да се буде само-за-читање: %2</translation>
     </message>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1495"/>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1529"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1476"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1510"/>
         <source>unknown exception</source>
         <translation>непознати изузетак</translation>
     </message>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1539"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1520"/>
         <source>Error updating metadata: %1</source>
         <translation>Грешка приликом ажурирања метаподатака: %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1543"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1524"/>
         <source>File is currently in use</source>
         <translation>Фајл се тренутно користи</translation>
     </message>
@@ -4534,60 +4534,60 @@ This is a new, experimental mode. If you decide to use it, please report any iss
 <context>
     <name>OCC::PropagateUploadFileCommon</name>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="243"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="252"/>
         <source>Failed to upload encrypted file.</source>
         <translation>Није успело отпремање шифрованог фајла.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="278"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="287"/>
         <source>File %1 cannot be uploaded because another file with the same name, differing only in case, exists</source>
         <translation>Фајл %1 се не може отпремити јер постоји други фајл, чије се име разликује само у великим и малим словима</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="289"/>
-        <location filename="../src/libsync/propagateupload.cpp" line="713"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="298"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="729"/>
         <source>Upload of %1 exceeds the quota for the folder</source>
         <translation>Отпремање %1 премашује квоту фасцикле</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="327"/>
-        <location filename="../src/libsync/propagateupload.cpp" line="402"/>
-        <location filename="../src/libsync/propagateupload.cpp" line="415"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="342"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="418"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="431"/>
         <source>File %1 has invalid modification time. Do not upload to the server.</source>
         <translation>Фајл %1 има неисправно време измене. Не отпремајте га на сервер.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="399"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="415"/>
         <source>File Removed (start upload) %1</source>
         <translation>Фајл уклоњен (започето отпремање) %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="425"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="441"/>
         <source>Local file changed during syncing. It will be resumed.</source>
         <translation>Локални фајл је измењен током синхронизације. Биће настављена.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="436"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="452"/>
         <source>Local file changed during sync.</source>
         <translation>Локални фајл измењен током синхронизације.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="446"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="462"/>
         <source>Failed to unlock encrypted folder.</source>
         <translation>Није успело откључавање шифрованог фолдера.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="719"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="735"/>
         <source>Unable to upload an item with invalid characters</source>
         <translation>Не може да се отпреми ставка са неважећим карактерима</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="821"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="837"/>
         <source>Error updating metadata: %1</source>
         <translation>Грешка приликом ажурирања метаподатака: %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="824"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="840"/>
         <source>The file %1 is currently in use</source>
         <translation>Фајл %1 се тренутно користи</translation>
     </message>
@@ -5210,68 +5210,68 @@ Server replied with error: %2</source>
         <translation>%1 (прескочено због раније грешке, покушавам поново за %2)</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="384"/>
+        <location filename="../src/libsync/syncengine.cpp" line="383"/>
         <source>Could not update file: %1</source>
         <translation>Фајл не може да се ажурира: %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="413"/>
+        <location filename="../src/libsync/syncengine.cpp" line="412"/>
         <source>Could not update virtual file metadata: %1</source>
         <translation>Не могу да се ажурирају метаподаци виртуелног фајла: %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="420"/>
+        <location filename="../src/libsync/syncengine.cpp" line="419"/>
         <source>Could not update file metadata: %1</source>
         <translation>Не могу да се ажурирају метаподаци фајла: %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="434"/>
+        <location filename="../src/libsync/syncengine.cpp" line="433"/>
         <source>Could not set file record to local DB: %1</source>
         <translation>Не може да се постави фајл запис у локалну базу: %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="466"/>
+        <location filename="../src/libsync/syncengine.cpp" line="465"/>
         <source>Unresolved conflict.</source>
         <translation>Неразрешени конфликт.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="568"/>
+        <location filename="../src/libsync/syncengine.cpp" line="567"/>
         <source>Only %1 are available, need at least %2 to start</source>
         <comment>Placeholders are postfixed with file sizes using Utility::octetsToString()</comment>
         <translation>Доступно је само %1, треба бар %2 за започињање</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="601"/>
+        <location filename="../src/libsync/syncengine.cpp" line="600"/>
         <source>Unable to open or create the local sync database. Make sure you have write access in the sync folder.</source>
         <translation>Не могу да отворим или креирам локалну базу за синхронизацију. Погледајте да ли имате право писања у синхронизационој фасцикли.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="617"/>
+        <location filename="../src/libsync/syncengine.cpp" line="616"/>
         <source>Using virtual files with suffix, but suffix is not set</source>
         <translation>Користе се вируелни фајлови са суфиксом, али он није постављен</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="629"/>
+        <location filename="../src/libsync/syncengine.cpp" line="628"/>
         <source>Unable to read the blacklist from the local database</source>
         <translation>Не могу да читам листу ставки игнорисаних за синхронизацију из локалне базе</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="669"/>
+        <location filename="../src/libsync/syncengine.cpp" line="668"/>
         <source>Unable to read from the sync journal.</source>
         <translation>Не могу да читам синхронизациони журнал.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="825"/>
+        <location filename="../src/libsync/syncengine.cpp" line="824"/>
         <source>Cannot open the sync journal</source>
         <translation>Не могу да отворим журнал синхронизације</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="1428"/>
+        <location filename="../src/libsync/syncengine.cpp" line="1427"/>
         <source>Disk space is low: Downloads that would reduce free space below %1 were skipped.</source>
         <translation>Мало простора на диску: преузимања која би смањила слободно место испод %1 су прескочена.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="1435"/>
+        <location filename="../src/libsync/syncengine.cpp" line="1434"/>
         <source>There is insufficient space available on the server for some uploads.</source>
         <translation>Нема довољно места на серверу за нека отпремања.</translation>
     </message>
@@ -6078,12 +6078,12 @@ Server replied with error: %2</source>
     <message>
         <location filename="../src/common/filesystembase.cpp" line="596"/>
         <source>File is already deleted</source>
-        <translation type="unfinished"/>
+        <translation>Фајл је већ обрисан</translation>
     </message>
     <message>
         <location filename="../src/common/filesystembase.cpp" line="611"/>
         <source>Error deleting the file</source>
-        <translation type="unfinished"/>
+        <translation>Грешка приликом брисања фајла</translation>
     </message>
     <message numerus="yes">
         <location filename="../src/common/utility.cpp" line="440"/>

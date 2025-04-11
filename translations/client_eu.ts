@@ -416,12 +416,12 @@ macOS may ignore or delay this request.</source>
 <context>
     <name>FileSystem</name>
     <message>
-        <location filename="../src/libsync/filesystem.cpp" line="288"/>
+        <location filename="../src/libsync/filesystem.cpp" line="285"/>
         <source>Error removing &quot;%1&quot;: %2</source>
         <translation>Errorea &quot;%1&quot; kentzen: %2</translation>
     </message>
     <message>
-        <location filename="../src/libsync/filesystem.cpp" line="308"/>
+        <location filename="../src/libsync/filesystem.cpp" line="305"/>
         <source>Could not remove folder &quot;%1&quot;</source>
         <translation>Ezin izan da kendu &quot;%1&quot; karpeta</translation>
     </message>
@@ -524,17 +524,17 @@ macOS may ignore or delay this request.</source>
 <context>
     <name>OCC::Account</name>
     <message>
-        <location filename="../src/libsync/account.cpp" line="1013"/>
+        <location filename="../src/libsync/account.cpp" line="1018"/>
         <source>File %1 is already locked by %2.</source>
         <translation>%1 fitxategia %2-(e)k blokeatuta du dagoeneko</translation>
     </message>
     <message>
-        <location filename="../src/libsync/account.cpp" line="1015"/>
+        <location filename="../src/libsync/account.cpp" line="1020"/>
         <source>Lock operation on %1 failed with error %2</source>
         <translation>%1 blokeatze eragiketak huts egin du %2 errorearekin</translation>
     </message>
     <message>
-        <location filename="../src/libsync/account.cpp" line="1017"/>
+        <location filename="../src/libsync/account.cpp" line="1022"/>
         <source>Unlock operation on %1 failed with error %2</source>
         <translation>%1 desblokeatze eragiketak huts egin du %2 errorearekin</translation>
     </message>
@@ -1273,58 +1273,58 @@ Ekintza honek unean uneko sinkronizazioa bertan behera utziko du.</translation>
 <context>
     <name>OCC::BulkPropagatorJob</name>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="123"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="150"/>
         <source>File %1 cannot be uploaded because another file with the same name, differing only in case, exists</source>
         <translation>%1 fitxategia ezin da igo izen bereko beste fitxategi bat dagoelako, baina letra maiuskula eta xehe ezberdinekin</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="175"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="209"/>
         <source>File %1 has invalid modified time. Do not upload to the server.</source>
         <translation>%1 fitxategiak aldaketa-data baliogabea du. Ez igo hau zerbitzarira.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="296"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="361"/>
         <source>File Removed (start upload) %1</source>
         <translation>Fitxategia kendu da (hasi igoera) %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="308"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="380"/>
         <source>File %1 has invalid modification time. Do not upload to the server.</source>
         <translation>%1 fitxategiak aldaketa-data baliogabea du. Ez igo hau zerbitzarira.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="320"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="393"/>
         <source>Local file changed during syncing. It will be resumed.</source>
         <translation>Fitxategi lokala aldatu egin da sinkronizazioa egin bitartean. Berrekin egingo da.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="334"/>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="678"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="407"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="754"/>
         <source>Local file changed during sync.</source>
         <translation>Fitxategi lokala aldatu da sinkronizazioan.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="441"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="517"/>
         <source>Network error: %1</source>
         <translation>Sareko errorea: %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="487"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="563"/>
         <source>Error updating metadata: %1</source>
         <translation>Erorrea metadatuak eguneratzen: %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="490"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="566"/>
         <source>The file %1 is currently in use</source>
         <translation>%1 fitxategia momentu honetan erabilpean dago</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="660"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="736"/>
         <source>The local file was removed during sync.</source>
         <translation>Fitxategi lokala ezabatu da sinkronizazioan.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="708"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="784"/>
         <source>Restoration failed: %1</source>
         <translation>Berrezartzeak huts egin du: %1</translation>
     </message>
@@ -1482,7 +1482,7 @@ Ekintza honek unean uneko sinkronizazioa bertan behera utziko du.</translation>
 <context>
     <name>OCC::CleanupPollsJob</name>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1729"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1710"/>
         <source>Error writing metadata to the database</source>
         <translation>Errorea metadatuak datu-basean idaztean</translation>
     </message>
@@ -3724,8 +3724,8 @@ Kontuan izan erregistro-komando lerroaren edozein aukera erabiliz ezarpen hau ga
 <context>
     <name>OCC::OwncloudPropagator</name>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="939"/>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1016"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="937"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1014"/>
         <source>Impossible to get modification time for file in conflict %1</source>
         <translation>Ezin izan da lortu %1 gatazkan dagoen fitxategiaren aldatze-denbora</translation>
     </message>
@@ -3980,7 +3980,7 @@ Modu hau berria eta experimentala da. Erabiltzea erabakitzen baduzu, agertzen di
 <context>
     <name>OCC::PollJob</name>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="140"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="149"/>
         <source>Invalid JSON reply from the poll URL</source>
         <translation>Baliogabeko JSON erantzuna galdeketaren URLtik</translation>
     </message>
@@ -4134,64 +4134,64 @@ Modu hau berria eta experimentala da. Erabiltzea erabakitzen baduzu, agertzen di
         <translation>Zerbitzariak ez du %1-rik jakinarazi</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1126"/>
+        <location filename="../src/libsync/discovery.cpp" line="1127"/>
         <source>Cannot sync due to invalid modification time</source>
         <translation>Ezin da sinkronizatu aldaketa-ordu baliogabea delako</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1136"/>
+        <location filename="../src/libsync/discovery.cpp" line="1137"/>
         <source>Could not upload file, because it is open in &quot;%1&quot;.</source>
         <translation>Ezin izan da fitxategia kargatu, &quot;%1&quot;(e)n irekita dagoelako.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1179"/>
+        <location filename="../src/libsync/discovery.cpp" line="1180"/>
         <source>Error while deleting file record %1 from the database</source>
         <translation>Errorea %1 fitxategi erregistroa datu-basetik ezabatzean</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1457"/>
-        <location filename="../src/libsync/discovery.cpp" line="1915"/>
+        <location filename="../src/libsync/discovery.cpp" line="1458"/>
+        <location filename="../src/libsync/discovery.cpp" line="1916"/>
         <source>Moved to invalid target, restoring</source>
         <translation>Baliogabeko helburura mugitu da, berrezartzen</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1775"/>
+        <location filename="../src/libsync/discovery.cpp" line="1776"/>
         <source>Cannot modify encrypted item because the selected certificate is not valid.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1837"/>
+        <location filename="../src/libsync/discovery.cpp" line="1838"/>
         <source>Ignored because of the &quot;choose what to sync&quot; blacklist</source>
         <translation>Ez ikusi egin zaio, &quot;aukeratu zer sinkronizatu&quot; zerrenda beltzagatik.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1871"/>
-        <location filename="../src/libsync/discovery.cpp" line="2076"/>
+        <location filename="../src/libsync/discovery.cpp" line="1872"/>
+        <location filename="../src/libsync/discovery.cpp" line="2077"/>
         <source>Not allowed because you don&apos;t have permission to add subfolders to that folder</source>
         <translation>Ez da onartu, ez daukazulako baimenik karpeta horretan azpikarpetak gehitzeko</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1879"/>
+        <location filename="../src/libsync/discovery.cpp" line="1880"/>
         <source>Not allowed because you don&apos;t have permission to add files in that folder</source>
         <translation>Ez da onartu, ez daukazulako baimenik karpeta horretan fitxategiak gehitzeko</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1893"/>
+        <location filename="../src/libsync/discovery.cpp" line="1894"/>
         <source>Not allowed to upload this file because it is read-only on the server, restoring</source>
         <translation>Ez dago baimenik fitxategi hau igotzeko zerbitzarian irakurtzeko soilik delako, leheneratzen.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1929"/>
+        <location filename="../src/libsync/discovery.cpp" line="1930"/>
         <source>Not allowed to remove, restoring</source>
         <translation>Ezabatzeko baimenik gabe, berrezartzen</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="2120"/>
+        <location filename="../src/libsync/discovery.cpp" line="2121"/>
         <source>Error while reading the database</source>
         <translation>Errorea datu-basea irakurtzean</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="2205"/>
+        <location filename="../src/libsync/discovery.cpp" line="2206"/>
         <source>Server replied with an error while reading directory &quot;%1&quot; : %2</source>
         <translation>Zerbitzariak errore batekin erantzun du &quot;%1&quot; direktorioa irakurtzean: % 2</translation>
     </message>
@@ -4199,38 +4199,38 @@ Modu hau berria eta experimentala da. Erabiltzea erabakitzen baduzu, agertzen di
 <context>
     <name>OCC::PropagateDirectory</name>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1439"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1420"/>
         <source>Could not delete file %1 from local DB</source>
         <translation>Ezin izan da %1 fitxategia datu-base lokaletik ezabatu</translation>
     </message>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1453"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1434"/>
         <source>Error updating metadata due to invalid modification time</source>
         <translation>Errorea metadatuak eguneratzen aldaketa-data baliogabeagatik</translation>
     </message>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1483"/>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1489"/>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1495"/>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1517"/>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1523"/>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1529"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1464"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1470"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1476"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1498"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1504"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1510"/>
         <source>The folder %1 cannot be made read-only: %2</source>
         <translation>%1 karpeta ezin da irakurtzeko soilik bihurtu: %2</translation>
     </message>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1495"/>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1529"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1476"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1510"/>
         <source>unknown exception</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1539"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1520"/>
         <source>Error updating metadata: %1</source>
         <translation>Erorrea metadatuak eguneratzen: %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1543"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1524"/>
         <source>File is currently in use</source>
         <translation>Fitxategia erabiltzen ari da</translation>
     </message>
@@ -4529,60 +4529,60 @@ Modu hau berria eta experimentala da. Erabiltzea erabakitzen baduzu, agertzen di
 <context>
     <name>OCC::PropagateUploadFileCommon</name>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="243"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="252"/>
         <source>Failed to upload encrypted file.</source>
         <translation>Ezin izan da zifratutako fitxategia igo.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="278"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="287"/>
         <source>File %1 cannot be uploaded because another file with the same name, differing only in case, exists</source>
         <translation>%1 fitxategia ezin da igo izen bereko beste fitxategi bat dagoelako, baina letra maiuskula eta xehe ezberdinekin</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="289"/>
-        <location filename="../src/libsync/propagateupload.cpp" line="713"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="298"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="729"/>
         <source>Upload of %1 exceeds the quota for the folder</source>
         <translation>%1-aren igoerak karpetaren kuota gainditzen du</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="327"/>
-        <location filename="../src/libsync/propagateupload.cpp" line="402"/>
-        <location filename="../src/libsync/propagateupload.cpp" line="415"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="342"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="418"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="431"/>
         <source>File %1 has invalid modification time. Do not upload to the server.</source>
         <translation>%1 fitxategiak aldaketa-data baliogabea du. Ez igo hau zerbitzarira.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="399"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="415"/>
         <source>File Removed (start upload) %1</source>
         <translation>Fitxategia kendu da (hasi igoera) %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="425"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="441"/>
         <source>Local file changed during syncing. It will be resumed.</source>
         <translation>Fitxategi lokala aldatu egin da sinkronizazioa egin bitartean. Berrekin egingo da.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="436"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="452"/>
         <source>Local file changed during sync.</source>
         <translation>Fitxategi lokala aldatu da sinkronizazioan.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="446"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="462"/>
         <source>Failed to unlock encrypted folder.</source>
         <translation>Ezin izan da enkriptatutako karpeta desblokeatu.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="719"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="735"/>
         <source>Unable to upload an item with invalid characters</source>
         <translation>Ezin da baliogabeko karaktereak dituen elementu bat igo</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="821"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="837"/>
         <source>Error updating metadata: %1</source>
         <translation>Erorrea metadatuak eguneratzen: %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="824"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="840"/>
         <source>The file %1 is currently in use</source>
         <translation>%1 fitxategia erabiltzen ari da</translation>
     </message>
@@ -5205,68 +5205,68 @@ Zerbitzariak errorearekin erantzun du: %2</translation>
         <translation>%1 (saltatua zena aurreko errore batengatik, berriro saiatzen hemen: %2)</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="384"/>
+        <location filename="../src/libsync/syncengine.cpp" line="383"/>
         <source>Could not update file: %1</source>
         <translation>Ezin izan da eguneratu fitxategia: % 1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="413"/>
+        <location filename="../src/libsync/syncengine.cpp" line="412"/>
         <source>Could not update virtual file metadata: %1</source>
         <translation>Ezin izan dira fitxategi birtualaren metadatuak eguneratu: %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="420"/>
+        <location filename="../src/libsync/syncengine.cpp" line="419"/>
         <source>Could not update file metadata: %1</source>
         <translation>Ezin izan dira fitxategiaren metadatuak eguneratu: %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="434"/>
+        <location filename="../src/libsync/syncengine.cpp" line="433"/>
         <source>Could not set file record to local DB: %1</source>
         <translation>Ezin izan da fitxategiaren erregistroa datu-base lokalean ezarri: %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="466"/>
+        <location filename="../src/libsync/syncengine.cpp" line="465"/>
         <source>Unresolved conflict.</source>
         <translation>Ebatzi gabeko gatazka.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="568"/>
+        <location filename="../src/libsync/syncengine.cpp" line="567"/>
         <source>Only %1 are available, need at least %2 to start</source>
         <comment>Placeholders are postfixed with file sizes using Utility::octetsToString()</comment>
         <translation>%1 bakarrik dago eskuragarri, gutxienez %2 behar da hasteko.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="601"/>
+        <location filename="../src/libsync/syncengine.cpp" line="600"/>
         <source>Unable to open or create the local sync database. Make sure you have write access in the sync folder.</source>
         <translation>Ezin izan da ireki edo sortu datu-base lokal sinkronizatua. Ziurtatu idazteko baimena daukazula karpeta sinkronizatu lokalean. </translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="617"/>
+        <location filename="../src/libsync/syncengine.cpp" line="616"/>
         <source>Using virtual files with suffix, but suffix is not set</source>
         <translation>Suffix erabiltzen da fitxategi birtualak kudeatzeko, baina suffix ez dago konfiguratuta</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="629"/>
+        <location filename="../src/libsync/syncengine.cpp" line="628"/>
         <source>Unable to read the blacklist from the local database</source>
         <translation>Ezin izan da zerrenda beltza irakurri datu-base lokaletik</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="669"/>
+        <location filename="../src/libsync/syncengine.cpp" line="668"/>
         <source>Unable to read from the sync journal.</source>
         <translation>Ezin izan da sinkronizazio-egunkaria irakurri.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="825"/>
+        <location filename="../src/libsync/syncengine.cpp" line="824"/>
         <source>Cannot open the sync journal</source>
         <translation>Ezin da sinkronizazio egunerokoa ireki</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="1428"/>
+        <location filename="../src/libsync/syncengine.cpp" line="1427"/>
         <source>Disk space is low: Downloads that would reduce free space below %1 were skipped.</source>
         <translation>Toki gutxi dago diskoan: toki librea %1 azpitik gutxituko zuten deskargak saltatu egin dira.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="1435"/>
+        <location filename="../src/libsync/syncengine.cpp" line="1434"/>
         <source>There is insufficient space available on the server for some uploads.</source>
         <translation>Ez dago nahiko toki erabilgarririk zerbitzarian hainbat igoeretarako.</translation>
     </message>

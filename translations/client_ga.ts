@@ -417,12 +417,12 @@ féadfaidh macOS neamhaird a dhéanamh den iarratas seo nó moill a chur air.</t
 <context>
     <name>FileSystem</name>
     <message>
-        <location filename="../src/libsync/filesystem.cpp" line="288"/>
+        <location filename="../src/libsync/filesystem.cpp" line="285"/>
         <source>Error removing &quot;%1&quot;: %2</source>
         <translation>Earráid agus &quot;% 1&quot; á bhaint: % 2</translation>
     </message>
     <message>
-        <location filename="../src/libsync/filesystem.cpp" line="308"/>
+        <location filename="../src/libsync/filesystem.cpp" line="305"/>
         <source>Could not remove folder &quot;%1&quot;</source>
         <translation>Níorbh fhéidir fillteán &quot;% 1&quot; a bhaint</translation>
     </message>
@@ -525,17 +525,17 @@ féadfaidh macOS neamhaird a dhéanamh den iarratas seo nó moill a chur air.</t
 <context>
     <name>OCC::Account</name>
     <message>
-        <location filename="../src/libsync/account.cpp" line="1013"/>
+        <location filename="../src/libsync/account.cpp" line="1018"/>
         <source>File %1 is already locked by %2.</source>
         <translation>Tá comhad % 1 faoi ghlas cheana féin ag % 2.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/account.cpp" line="1015"/>
+        <location filename="../src/libsync/account.cpp" line="1020"/>
         <source>Lock operation on %1 failed with error %2</source>
         <translation>Theip ar an oibríocht ghlasála ar % 1 le hearráid % 2</translation>
     </message>
     <message>
-        <location filename="../src/libsync/account.cpp" line="1017"/>
+        <location filename="../src/libsync/account.cpp" line="1022"/>
         <source>Unlock operation on %1 failed with error %2</source>
         <translation>Theip ar an oibríocht díghlasála ar % 1 le hearráid % 2</translation>
     </message>
@@ -1274,58 +1274,58 @@ Cuirfidh an gníomh seo deireadh le haon sioncrónú atá ar siúl faoi láthair
 <context>
     <name>OCC::BulkPropagatorJob</name>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="123"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="150"/>
         <source>File %1 cannot be uploaded because another file with the same name, differing only in case, exists</source>
         <translation>Ní féidir comhad % 1 a uaslódáil toisc go bhfuil comhad eile leis an ainm céanna, difriúil ar eagla na heagla</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="175"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="209"/>
         <source>File %1 has invalid modified time. Do not upload to the server.</source>
         <translation>Tá am modhnaithe neamhbhailí i gcomhad % 1. Ná uaslódáil chuig an bhfreastalaí.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="296"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="361"/>
         <source>File Removed (start upload) %1</source>
         <translation>Baineadh an Comhad (tús le huaslódáil) % 1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="308"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="380"/>
         <source>File %1 has invalid modification time. Do not upload to the server.</source>
         <translation>Tá am modhnuithe neamhbhailí ag comhad % 1. Ná uaslódáil chuig an bhfreastalaí.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="320"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="393"/>
         <source>Local file changed during syncing. It will be resumed.</source>
         <translation>Athraíodh an comhad áitiúil le linn sioncronaithe. Atosófar é.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="334"/>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="678"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="407"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="754"/>
         <source>Local file changed during sync.</source>
         <translation>Athraíodh an comhad áitiúil le linn sioncronaithe.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="441"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="517"/>
         <source>Network error: %1</source>
         <translation>Earráid líonra: % 1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="487"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="563"/>
         <source>Error updating metadata: %1</source>
         <translation>Earráid agus meiteashonraí á nuashonrú: % 1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="490"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="566"/>
         <source>The file %1 is currently in use</source>
         <translation>Tá comhad % 1 in úsáid faoi láthair</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="660"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="736"/>
         <source>The local file was removed during sync.</source>
         <translation>Baineadh an comhad áitiúil le linn sioncronaithe.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="708"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="784"/>
         <source>Restoration failed: %1</source>
         <translation>Theip ar athchóiriú: % 1</translation>
     </message>
@@ -1483,7 +1483,7 @@ Cuirfidh an gníomh seo deireadh le haon sioncrónú atá ar siúl faoi láthair
 <context>
     <name>OCC::CleanupPollsJob</name>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1729"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1710"/>
         <source>Error writing metadata to the database</source>
         <translation>Earráid agus meiteashonraí á scríobh chuig an mbunachar sonraí</translation>
     </message>
@@ -3729,8 +3729,8 @@ Tabhair faoi deara go sárófar an socrú seo trí úsáid a bhaint as aon rogha
 <context>
     <name>OCC::OwncloudPropagator</name>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="939"/>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1016"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="937"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1014"/>
         <source>Impossible to get modification time for file in conflict %1</source>
         <translation>Ní féidir am mionathraithe a fháil don chomhad i gcoimhlint % 1</translation>
     </message>
@@ -3985,7 +3985,7 @@ Is modh turgnamhach nua é seo. Má shocraíonn tú é a úsáid, cuir in iúl l
 <context>
     <name>OCC::PollJob</name>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="140"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="149"/>
         <source>Invalid JSON reply from the poll URL</source>
         <translation>Freagra neamhbhailí JSON ón URL vótaíochta</translation>
     </message>
@@ -4139,64 +4139,64 @@ Is modh turgnamhach nua é seo. Má shocraíonn tú é a úsáid, cuir in iúl l
         <translation>Níor thuairiscigh freastalaí % 1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1126"/>
+        <location filename="../src/libsync/discovery.cpp" line="1127"/>
         <source>Cannot sync due to invalid modification time</source>
         <translation>Ní féidir sioncronú a dhéanamh mar gheall ar am modhnuithe neamhbhailí</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1136"/>
+        <location filename="../src/libsync/discovery.cpp" line="1137"/>
         <source>Could not upload file, because it is open in &quot;%1&quot;.</source>
         <translation>Níorbh fhéidir an comhad a uaslódáil toisc go bhfuil sé oscailte i &quot;% 1&quot;.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1179"/>
+        <location filename="../src/libsync/discovery.cpp" line="1180"/>
         <source>Error while deleting file record %1 from the database</source>
         <translation>Earráid agus taifead comhaid % 1 á scriosadh ón mbunachar sonraí</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1457"/>
-        <location filename="../src/libsync/discovery.cpp" line="1915"/>
+        <location filename="../src/libsync/discovery.cpp" line="1458"/>
+        <location filename="../src/libsync/discovery.cpp" line="1916"/>
         <source>Moved to invalid target, restoring</source>
         <translation>Bogtha go dtí an sprioc neamhbhailí, á athchóiriú</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1775"/>
+        <location filename="../src/libsync/discovery.cpp" line="1776"/>
         <source>Cannot modify encrypted item because the selected certificate is not valid.</source>
         <translation>Ní féidir an mhír chriptithe a mhionathrú toisc nach bhfuil an teastas roghnaithe bailí.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1837"/>
+        <location filename="../src/libsync/discovery.cpp" line="1838"/>
         <source>Ignored because of the &quot;choose what to sync&quot; blacklist</source>
         <translation>Rinneadh neamhaird de mar gheall ar an liosta dubh &quot;roghnaigh cad ba cheart a shioncronú&quot;.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1871"/>
-        <location filename="../src/libsync/discovery.cpp" line="2076"/>
+        <location filename="../src/libsync/discovery.cpp" line="1872"/>
+        <location filename="../src/libsync/discovery.cpp" line="2077"/>
         <source>Not allowed because you don&apos;t have permission to add subfolders to that folder</source>
         <translation>Ní cheadaítear toisc nach bhfuil cead agat fofhillteáin a chur leis an bhfillteán sin</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1879"/>
+        <location filename="../src/libsync/discovery.cpp" line="1880"/>
         <source>Not allowed because you don&apos;t have permission to add files in that folder</source>
         <translation>Ní cheadaítear toisc nach bhfuil cead agat comhaid a chur san fhillteán sin</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1893"/>
+        <location filename="../src/libsync/discovery.cpp" line="1894"/>
         <source>Not allowed to upload this file because it is read-only on the server, restoring</source>
         <translation>Ní cheadaítear an comhad seo a uaslódáil toisc go bhfuil sé inléite amháin ar an bhfreastalaí, á athchóiriú</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1929"/>
+        <location filename="../src/libsync/discovery.cpp" line="1930"/>
         <source>Not allowed to remove, restoring</source>
         <translation>Ní cheadaítear a bhaint, a athchóiriú</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="2120"/>
+        <location filename="../src/libsync/discovery.cpp" line="2121"/>
         <source>Error while reading the database</source>
         <translation>Earráid agus an bunachar sonraí á léamh</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="2205"/>
+        <location filename="../src/libsync/discovery.cpp" line="2206"/>
         <source>Server replied with an error while reading directory &quot;%1&quot; : %2</source>
         <translation>D&apos;fhreagair an freastalaí le earráid agus eolaire &quot;% 1&quot; á léamh : % 2</translation>
     </message>
@@ -4204,38 +4204,38 @@ Is modh turgnamhach nua é seo. Má shocraíonn tú é a úsáid, cuir in iúl l
 <context>
     <name>OCC::PropagateDirectory</name>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1439"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1420"/>
         <source>Could not delete file %1 from local DB</source>
         <translation>Níorbh fhéidir comhad %1 a scriosadh ó DB logánta</translation>
     </message>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1453"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1434"/>
         <source>Error updating metadata due to invalid modification time</source>
         <translation>Earráid agus meiteashonraí á nuashonrú mar gheall ar am modhnuithe neamhbhailí</translation>
     </message>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1483"/>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1489"/>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1495"/>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1517"/>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1523"/>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1529"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1464"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1470"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1476"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1498"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1504"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1510"/>
         <source>The folder %1 cannot be made read-only: %2</source>
         <translation>Ní féidir fillteán % 1 a dhéanamh inléite amháin: % 2</translation>
     </message>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1495"/>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1529"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1476"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1510"/>
         <source>unknown exception</source>
         <translation>eisceacht anaithnid</translation>
     </message>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1539"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1520"/>
         <source>Error updating metadata: %1</source>
         <translation>Earráid agus meiteashonraí á nuashonrú: % 1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1543"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1524"/>
         <source>File is currently in use</source>
         <translation>Tá an comhad in úsáid faoi láthair</translation>
     </message>
@@ -4534,60 +4534,60 @@ Is modh turgnamhach nua é seo. Má shocraíonn tú é a úsáid, cuir in iúl l
 <context>
     <name>OCC::PropagateUploadFileCommon</name>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="243"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="252"/>
         <source>Failed to upload encrypted file.</source>
         <translation>Theip ar uaslódáil an chomhaid chriptithe.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="278"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="287"/>
         <source>File %1 cannot be uploaded because another file with the same name, differing only in case, exists</source>
         <translation>Ní féidir comhad % 1 a uaslódáil toisc go bhfuil comhad eile leis an ainm céanna, difriúil ar eagla na heagla</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="289"/>
-        <location filename="../src/libsync/propagateupload.cpp" line="713"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="298"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="729"/>
         <source>Upload of %1 exceeds the quota for the folder</source>
         <translation>Sáraíonn uaslódáil % 1 cuóta an fhillteáin</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="327"/>
-        <location filename="../src/libsync/propagateupload.cpp" line="402"/>
-        <location filename="../src/libsync/propagateupload.cpp" line="415"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="342"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="418"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="431"/>
         <source>File %1 has invalid modification time. Do not upload to the server.</source>
         <translation>Tá am modhnuithe neamhbhailí ag comhad % 1. Ná uaslódáil chuig an bhfreastalaí.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="399"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="415"/>
         <source>File Removed (start upload) %1</source>
         <translation>Baineadh an Comhad (tús le huaslódáil) % 1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="425"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="441"/>
         <source>Local file changed during syncing. It will be resumed.</source>
         <translation>Athraíodh an comhad áitiúil le linn sioncronaithe. Atosófar é.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="436"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="452"/>
         <source>Local file changed during sync.</source>
         <translation>Athraíodh an comhad áitiúil le linn sioncronaithe.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="446"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="462"/>
         <source>Failed to unlock encrypted folder.</source>
         <translation>Theip ar dhíghlasáil fillteán criptithe.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="719"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="735"/>
         <source>Unable to upload an item with invalid characters</source>
         <translation>Ní féidir mír le carachtair neamhbhailí a uaslódáil</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="821"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="837"/>
         <source>Error updating metadata: %1</source>
         <translation>Earráid agus meiteashonraí á nuashonrú: % 1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="824"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="840"/>
         <source>The file %1 is currently in use</source>
         <translation>Tá comhad % 1 in úsáid faoi láthair</translation>
     </message>
@@ -5210,68 +5210,68 @@ D&apos;fhreagair an freastalaí le hearráid: % 2</translation>
         <translation>% 1 (scipeáladh mar gheall ar earráid níos luaithe, ag iarraidh arís i % 2)</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="384"/>
+        <location filename="../src/libsync/syncengine.cpp" line="383"/>
         <source>Could not update file: %1</source>
         <translation>Níorbh fhéidir an comhad a nuashonrú: % 1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="413"/>
+        <location filename="../src/libsync/syncengine.cpp" line="412"/>
         <source>Could not update virtual file metadata: %1</source>
         <translation>Níorbh fhéidir meiteashonraí comhaid fhíorúla a nuashonrú: % 1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="420"/>
+        <location filename="../src/libsync/syncengine.cpp" line="419"/>
         <source>Could not update file metadata: %1</source>
         <translation>Níorbh fhéidir meiteashonraí comhaid a nuashonrú: % 1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="434"/>
+        <location filename="../src/libsync/syncengine.cpp" line="433"/>
         <source>Could not set file record to local DB: %1</source>
         <translation>Níorbh fhéidir taifead comhaid a shocrú go DB logánta: % 1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="466"/>
+        <location filename="../src/libsync/syncengine.cpp" line="465"/>
         <source>Unresolved conflict.</source>
         <translation>Coimhlint gan réiteach.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="568"/>
+        <location filename="../src/libsync/syncengine.cpp" line="567"/>
         <source>Only %1 are available, need at least %2 to start</source>
         <comment>Placeholders are postfixed with file sizes using Utility::octetsToString()</comment>
         <translation>Níl ach % 1 ar fáil, teastaíonn % 2 ar a laghad chun tosú</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="601"/>
+        <location filename="../src/libsync/syncengine.cpp" line="600"/>
         <source>Unable to open or create the local sync database. Make sure you have write access in the sync folder.</source>
         <translation>Ní féidir an bunachar sonraí sioncronaithe áitiúil a oscailt ná a chruthú. Cinntigh go bhfuil rochtain scríofa agat san fhillteán sioncronaithe.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="617"/>
+        <location filename="../src/libsync/syncengine.cpp" line="616"/>
         <source>Using virtual files with suffix, but suffix is not set</source>
         <translation>Comhaid fhíorúla a úsáid le hiarmhír, ach níl iarmhír socraithe</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="629"/>
+        <location filename="../src/libsync/syncengine.cpp" line="628"/>
         <source>Unable to read the blacklist from the local database</source>
         <translation>Ní féidir an liosta dubh a léamh ón mbunachar sonraí áitiúil</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="669"/>
+        <location filename="../src/libsync/syncengine.cpp" line="668"/>
         <source>Unable to read from the sync journal.</source>
         <translation>Ní féidir a léamh ón dialann sioncronaithe.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="825"/>
+        <location filename="../src/libsync/syncengine.cpp" line="824"/>
         <source>Cannot open the sync journal</source>
         <translation>Ní féidir an dialann sioncronaithe a oscailt</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="1428"/>
+        <location filename="../src/libsync/syncengine.cpp" line="1427"/>
         <source>Disk space is low: Downloads that would reduce free space below %1 were skipped.</source>
         <translation>Tá spás diosca íseal: Ní raibh íosluchtú déanta a laghdódh spás saor faoi % 1.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="1435"/>
+        <location filename="../src/libsync/syncengine.cpp" line="1434"/>
         <source>There is insufficient space available on the server for some uploads.</source>
         <translation>Níl go leor spáis ar fáil ar an bhfreastalaí le haghaidh roinnt uaslódála.</translation>
     </message>
