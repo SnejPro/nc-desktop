@@ -165,6 +165,14 @@ public:
      */
     [[nodiscard]] QString remotePathTrailingSlash() const;
 
+    /**
+     * Returns the path name of a file in the local canonical path.
+     *
+     * Similar to `QDir(path()).filePath(...)`, except file names like "Z:test"
+     * are treated as relative paths on Windows.
+     */
+    [[nodiscard]] QString filePath(const QString& fileName);
+
     [[nodiscard]] QString fulllRemotePathToPathInSyncJournalDb(const QString &fullRemotePath) const;
 
     void setNavigationPaneClsid(const QUuid &clsid) { _definition.navigationPaneClsid = clsid; }
@@ -335,10 +343,6 @@ public slots:
 
     // connected to the corresponding signals in the SyncEngine
     void slotAboutToRemoveAllFiles(OCC::SyncFileItem::Direction, std::function<void(bool)> callback);
-
-    void slotNeedToRemoveRemnantsReadOnlyFolders(const QList<SyncFileItemPtr> &folders,
-                                                 const QString &localPath,
-                                                 std::function<void(bool)> callback);
 
     /**
       * Starts a sync operation
