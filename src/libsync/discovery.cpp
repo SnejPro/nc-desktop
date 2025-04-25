@@ -418,13 +418,18 @@ bool ProcessDirectoryJob::handleExcluded(const QString &path, const Entries &ent
                         break;
                     }
                 }
-                const auto itemTypeName = (isDirectory ? tr("Folder", "name of folder entity to use when warning about invalid name") : tr("File", "name of folder entity to use when warning about invalid name"));
                 if (invalid) {
-                    item->_errorString = tr("%1 name containing the character \"%2\" is not supported on this file system.", "folder or file impossible to sync due to an invalid name, placeholders will be file or folder and the invalid character").arg(itemTypeName, QChar(invalid));
+                    item->_errorString = isDirectory
+                        ? tr("Folder names containing the character \"%1\" are not supported on this file system.", "%1: the invalid character").arg(QChar(invalid))
+                        : tr("File names containing the character \"%1\" are not supported on this file system.", "%1: the invalid character").arg(QChar(invalid));
                 } else if (isInvalidPattern) {
-                    item->_errorString = tr("%1 name contains at least one invalid character").arg(itemTypeName);
+                    item->_errorString = isDirectory
+                        ? tr("Folder name contains at least one invalid character")
+                        : tr("File name contains at least one invalid character");
                 } else {
-                    item->_errorString = tr("%1 name is a reserved name on this file system.").arg(itemTypeName);
+                    item->_errorString = isDirectory
+                        ? tr("Folder name is a reserved name on this file system.")
+                        : tr("File name is a reserved name on this file system.");
                 }
             }
             item->_status = SyncFileItem::FileNameInvalid;
@@ -573,8 +578,8 @@ void ProcessDirectoryJob::processFile(PathTuple path,
     const auto hasLocal = localEntry.isValid() ? "true" : _queryLocal == ParentNotChanged ? "db" : "false";
     const auto serverFileIsLocked = (serverEntry.isValid() ? (serverEntry.locked == SyncFileItem::LockStatus::LockedItem ? "locked" : "not locked")  : "");
     const auto localFileIsLocked = dbEntry._lockstate._locked ? "locked" : "not locked";
-    const auto serverFileLockType = serverEntry.isValid() ? QString::number(static_cast<int>(serverEntry.lockOwnerType)) : QStringLiteral("");
-    const auto localFileLockType = dbEntry._lockstate._locked ? QString::number(static_cast<int>(dbEntry._lockstate._lockOwnerType)) : QStringLiteral("");
+    const auto serverFileLockType = serverEntry.isValid() ? QString::number(static_cast<int>(serverEntry.lockOwnerType)) : QString{};
+    const auto localFileLockType = dbEntry._lockstate._locked ? QString::number(static_cast<int>(dbEntry._lockstate._lockOwnerType)) : QString{};
 
     QString processingLog;
     QDebug deleteLogger{&processingLog};
@@ -587,6 +592,7 @@ void ProcessDirectoryJob::processFile(PathTuple path,
                            << " | checksum: " << dbEntry._checksumHeader << "//" << serverEntry.checksumHeader
                            << " | perm: " << dbEntry._remotePerm << "//" << serverEntry.remotePerm
                            << " | fileid: " << dbEntry._fileId << "//" << serverEntry.fileId
+                           << " | inode: " << dbEntry._inode << "/" << localEntry.inode << "/"
                            << " | type: " << dbEntry._type << "/" << localEntry.type << "/" << (serverEntry.isDirectory ? ItemTypeDirectory : ItemTypeFile)
                            << " | e2ee: " << dbEntry.isE2eEncrypted() << "/" << serverEntry.isE2eEncrypted()
                            << " | e2eeMangledName: " << dbEntry.e2eMangledName() << "/" << serverEntry.e2eMangledName
@@ -838,7 +844,7 @@ void ProcessDirectoryJob::processFileAnalyzeRemoteInfo(const SyncFileItemPtr &it
             item->_size = sizeOnServer;
 
             if (serverEntry.isDirectory) {
-                ENFORCE(dbEntry.isDirectory());
+                Q_ASSERT(dbEntry.isDirectory());
                 item->_instruction = CSYNC_INSTRUCTION_UPDATE_METADATA;
             } else if (!localEntry.isValid() && _queryLocal != ParentNotChanged) {
                 // Deleted locally, changed on server
@@ -1867,16 +1873,14 @@ bool ProcessDirectoryJob::checkPermissions(const OCC::SyncFileItemPtr &item)
             // No permissions set
             return true;
         } else if (item->isDirectory() && !perms.hasPermission(RemotePermissions::CanAddSubDirectories)) {
-            qCWarning(lcDisco) << "checkForPermission: ERROR" << item->_file;
-            item->_instruction = CSYNC_INSTRUCTION_ERROR;
+            qCWarning(lcDisco) << "checkForPermission: Not allowed because you don't have permission to add subfolders to that folder:" << item->_file;
+            item->_instruction = CSYNC_INSTRUCTION_IGNORE;
             item->_errorString = tr("Not allowed because you don't have permission to add subfolders to that folder");
-            const auto localPath = QString{_discoveryData->_localDir + item->_file};
-            qCWarning(lcDisco) << "unexpected new folder in a read-only folder will be made read-write" << localPath;
             emit _discoveryData->remnantReadOnlyFolderDiscovered(item);
             return false;
         } else if (!item->isDirectory() && !perms.hasPermission(RemotePermissions::CanAddFile)) {
-            qCWarning(lcDisco) << "checkForPermission: ERROR" << item->_file;
-            item->_instruction = CSYNC_INSTRUCTION_ERROR;
+            qCWarning(lcDisco) << "checkForPermission: Not allowed because you don't have permission to add files in that folder:" << item->_file;
+            item->_instruction = CSYNC_INSTRUCTION_IGNORE;
             item->_errorString = tr("Not allowed because you don't have permission to add files in that folder");
             emit _discoveryData->remnantReadOnlyFolderDiscovered(item);
             return false;
@@ -2072,11 +2076,10 @@ int ProcessDirectoryJob::processSubJobs(int nbJobs)
                 if (perms.isNull()) {
                     // No permissions set
                 } else if (_dirItem->isDirectory() && !perms.hasPermission(RemotePermissions::CanAddSubDirectories)) {
-                    qCWarning(lcDisco) << "checkForPermission: ERROR" << _dirItem->_file;
-                    _dirItem->_instruction = CSYNC_INSTRUCTION_ERROR;
+                    qCWarning(lcDisco) << "checkForPermission: Not allowed because you don't have permission to add subfolders to that folder: " << _dirItem->_file;
+                    _dirItem->_instruction = CSYNC_INSTRUCTION_IGNORE;
                     _dirItem->_errorString = tr("Not allowed because you don't have permission to add subfolders to that folder");
                     const auto localPath = QString{_discoveryData->_localDir + _dirItem->_file};
-                    qCWarning(lcDisco) << "unexpected new folder in a read-only folder will be made read-write" << localPath;
                     emit _discoveryData->remnantReadOnlyFolderDiscovered(_dirItem);
                 }
 

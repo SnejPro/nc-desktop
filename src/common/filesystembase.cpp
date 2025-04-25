@@ -26,7 +26,6 @@
 #include <QFile>
 #include <QCoreApplication>
 
-#include <filesystem>
 #include <sys/stat.h>
 #include <sys/types.h>
 
@@ -243,54 +242,6 @@ bool FileSystem::rename(const QString &originFileName,
         }
     }
     return success;
-}
-
-bool FileSystem::uncheckedRenameReplace(const QString &originFileName,
-    const QString &destinationFileName,
-    QString *errorString)
-{
-#ifndef Q_OS_WIN
-    bool success = false;
-    QFile orig(originFileName);
-    // We want a rename that also overwrites.  QFile::rename does not overwrite.
-    // Qt 5.1 has QSaveFile::renameOverwrite we could use.
-    // ### FIXME
-    success = true;
-    bool destExists = fileExists(destinationFileName);
-    if (destExists && !QFile::remove(destinationFileName)) {
-        *errorString = orig.errorString();
-        qCWarning(lcFileSystem) << "Target file could not be removed.";
-        success = false;
-    }
-    if (success) {
-        success = orig.rename(destinationFileName);
-    }
-    if (!success) {
-        *errorString = orig.errorString();
-        qCWarning(lcFileSystem) << "Renaming temp file to final failed: " << *errorString;
-        return false;
-    }
-
-#else //Q_OS_WIN
-    // You can not overwrite a read-only file on windows.
-    if (!isWritable(destinationFileName)) {
-        setFileReadOnly(destinationFileName, false);
-    }
-
-    BOOL ok = 0;
-    QString orig = longWinPath(originFileName);
-    QString dest = longWinPath(destinationFileName);
-
-    ok = MoveFileEx((wchar_t *)orig.utf16(),
-        (wchar_t *)dest.utf16(),
-        MOVEFILE_REPLACE_EXISTING + MOVEFILE_COPY_ALLOWED + MOVEFILE_WRITE_THROUGH);
-    if (!ok) {
-        *errorString = Utility::formatWinError(GetLastError());
-        qCWarning(lcFileSystem) << "Renaming temp file to final failed: " << *errorString;
-        return false;
-    }
-#endif
-    return true;
 }
 
 bool FileSystem::openAndSeekFileSharedRead(QFile *file, QString *errorOrNull, qint64 seek)
@@ -589,30 +540,19 @@ bool FileSystem::remove(const QString &fileName, QString *errorString)
     // allow that.
     setFileReadOnly(fileName, false);
 #endif
-
-    try {
-        if (!std::filesystem::remove(std::filesystem::path{fileName.toUtf8().data()})) {
-            if (errorString) {
-                *errorString = QObject::tr("File is already deleted");
-            }
-            return false;
-        }
-    }
-    catch (const std::filesystem::filesystem_error &e)
-    {
-        if (errorString) {
-            *errorString = QString::fromLatin1(e.what());
-        }
-        return false;
-    }
-    catch (...)
-    {
-        if (errorString) {
-            *errorString = QObject::tr("Error deleting the file");
-        }
-        return false;
+    const auto deletedFileInfo = QFileInfo{fileName};
+    if (!deletedFileInfo.exists()) {
+        qCWarning(lcFileSystem()) << fileName << "has been already deleted";
     }
 
+    QFile f(fileName);
+    if (!f.remove()) {
+        if (errorString) {
+            *errorString = f.errorString();
+        }
+        qCWarning(lcFileSystem()) << f.errorString() << fileName;
+        return false;
+    }
     return true;
 }
 

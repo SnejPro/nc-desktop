@@ -226,7 +226,7 @@ void blacklistUpdate(SyncJournalDb *journal, SyncFileItem &item)
 void PropagateItemJob::done(const SyncFileItem::Status statusArg, const QString &errorString, const ErrorCategory category)
 {
     // Duplicate calls to done() are a logic error
-    ENFORCE(_state != Finished);
+    Q_ASSERT(_state != Finished);
     _state = Finished;
 
     _item->_status = statusArg;
@@ -1091,29 +1091,9 @@ Result<Vfs::ConvertToPlaceholderResult, QString> OwncloudPropagator::staticUpdat
 
 bool OwncloudPropagator::isDelayedUploadItem(const SyncFileItemPtr &item) const
 {
-    const auto checkFileShouldBeEncrypted = [this] (const SyncFileItemPtr &item) -> bool {
-        const auto path = item->_file;
-        const auto slashPosition = path.lastIndexOf('/');
-        const auto parentPath = slashPosition >= 0 ? path.left(slashPosition) : QString();
+    Q_UNUSED(item)
 
-        SyncJournalFileRecord parentRec;
-        bool ok = _journal->getFileRecord(parentPath, &parentRec);
-        if (!ok) {
-            return false;
-        }
-
-        const auto accountPtr = account();
-
-        if (!parentRec.isValid() ||
-            !parentRec.isE2eEncrypted()) {
-            return false;
-        }
-
-        return true;
-    };
-
-    return account()->capabilities().bulkUpload() && !_scheduleDelayedTasks && !item->isEncrypted() && _syncOptions.minChunkSize() > item->_size
-        && !isInBulkUploadBlackList(item->_file) && !checkFileShouldBeEncrypted(item);
+    return false;
 }
 
 void OwncloudPropagator::setScheduleDelayedTasks(bool active)
@@ -1267,7 +1247,9 @@ bool PropagatorCompositeJob::scheduleSelfOrChild()
         _tasksToDo.remove(0);
         PropagatorJob *job = propagator()->createJob(nextTask);
         if (!job) {
-            qCWarning(lcDirectory) << "Useless task found for file" << nextTask->destination() << "instruction" << nextTask->_instruction;
+            if (!propagator()->isDelayedUploadItem(nextTask)) {
+                qCWarning(lcDirectory) << "Useless task found for file" << nextTask->destination() << "instruction" << nextTask->_instruction;
+            }
             continue;
         }
         appendJob(job);
@@ -1312,7 +1294,7 @@ void PropagatorCompositeJob::slotSubJobFinished(SyncFileItem::Status status)
     // Delete the job and remove it from our list of jobs.
     subJob->deleteLater();
     int i = _runningJobs.indexOf(subJob);
-    ENFORCE(i >= 0); // should only happen if this function is called more than once
+    Q_ASSERT(i >= 0); // should only happen if this function is called more than once
     _runningJobs.remove(i);
 
     // Any sub job error will cause the whole composite to fail. This is important

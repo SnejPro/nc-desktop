@@ -122,13 +122,22 @@ namespace FileSystem {
      * errors are collected in errors.
      */
     bool OWNCLOUDSYNC_EXPORT removeRecursively(const QString &path,
-        const std::function<void(const QString &path, bool isDir)> &onDeleted = nullptr,
-        QStringList *errors = nullptr);
+                                               const std::function<void(const QString &path, bool isDir)> &onDeleted = nullptr,
+                                               QStringList *errors = nullptr,
+                                               const std::function<void(const QString &path, bool isDir)> &onError = nullptr);
 
     bool OWNCLOUDSYNC_EXPORT setFolderPermissions(const QString &path,
                                                   FileSystem::FolderPermissions permissions) noexcept;
 
     bool OWNCLOUDSYNC_EXPORT isFolderReadOnly(const std::filesystem::path &path) noexcept;
+
+    /**
+     * Rename the file \a originFileName to \a destinationFileName, and
+     * overwrite the destination if it already exists - without extra checks.
+     */
+    bool OWNCLOUDSYNC_EXPORT uncheckedRenameReplace(const QString &originFileName,
+                                                    const QString &destinationFileName,
+                                                    QString *errorString);
 }
 
 /** @} */
