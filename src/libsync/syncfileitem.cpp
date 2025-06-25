@@ -1,15 +1,7 @@
 /*
- * Copyright (C) by Klaas Freitag <freitag@owncloud.com>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
- * for more details.
+ * SPDX-FileCopyrightText: 2018 Nextcloud GmbH and Nextcloud contributors
+ * SPDX-FileCopyrightText: 2014 ownCloud GmbH
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "syncfileitem.h"
@@ -118,7 +110,6 @@ SyncJournalFileRecord SyncFileItem::toSyncJournalFileRecordWithInode(const QStri
     rec._checksumHeader = _checksumHeader;
     rec._e2eMangledName = _encryptedFileName.toUtf8();
     rec._e2eEncryptionStatus = EncryptionStatusEnums::toDbEncryptionStatus(_e2eEncryptionStatus);
-    rec._e2eCertificateFingerprint = _e2eCertificateFingerprint;
     rec._lockstate._locked = _locked == LockStatus::LockedItem;
     rec._lockstate._lockOwnerDisplayName = _lockOwnerDisplayName;
     rec._lockstate._lockOwnerId = _lockOwnerId;
@@ -159,7 +150,6 @@ SyncFileItemPtr SyncFileItem::fromSyncJournalFileRecord(const SyncJournalFileRec
     item->_encryptedFileName = rec.e2eMangledName();
     item->_e2eEncryptionStatus = EncryptionStatusEnums::fromDbEncryptionStatus(rec._e2eEncryptionStatus);
     item->_e2eEncryptionServerCapability = item->_e2eEncryptionStatus;
-    item->_e2eCertificateFingerprint = rec._e2eCertificateFingerprint;
     item->_locked = rec._lockstate._locked ? LockStatus::LockedItem : LockStatus::UnlockedItem;
     item->_lockOwnerDisplayName = rec._lockstate._lockOwnerDisplayName;
     item->_lockOwnerId = rec._lockstate._lockOwnerId;

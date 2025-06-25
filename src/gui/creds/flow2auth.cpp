@@ -1,16 +1,6 @@
 /*
- * Copyright (C) by Olivier Goffart <ogoffart@woboq.com>
- * Copyright (C) by Michael Schuster <michael@schuster.ms>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
- * for more details.
+ * SPDX-FileCopyrightText: 2019 Nextcloud GmbH and Nextcloud contributors
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include <QDesktopServices>
@@ -269,7 +259,7 @@ QJsonObject Flow2Auth::handleResponse(QNetworkReply *reply)
             .arg(jsonParseError.errorString());
         }
 
-        qCDebug(lcFlow2auth) << "Error when requesting:" << reply->url() << "- json returned:" << json << "- error:" << errorReason;
+        qCWarning(lcFlow2auth) << "Error when requesting:" << reply->url() << "- json returned:" << json << "- error:" << errorReason;
 
         // We get a 404 until authentication is done, so don't show this error in the GUI.
         if (reply->error() != QNetworkReply::ContentNotFoundError) {

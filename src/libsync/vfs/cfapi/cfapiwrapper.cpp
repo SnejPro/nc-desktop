@@ -1,15 +1,6 @@
 /*
- * Copyright (C) by Kevin Ottens <kevin.ottens@nextcloud.com>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
- * for more details.
+ * SPDX-FileCopyrightText: 2020 Nextcloud GmbH and Nextcloud contributors
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "cfapiwrapper.h"
@@ -60,7 +51,7 @@ QString createErrorMessageForPlaceholderUpdateAndCreate(const QString &path, con
     for (const auto &fileComponent : fileComponents) {
         if (fileComponent.startsWith(forbiddenLeadingCharacterInPath)) {
             qCInfo(lcCfApiWrapper) << "Failed to create/update a placeholder for path \"" << pathFromNativeSeparators << "\" that has a leading '#'.";
-            return {(originalErrorMessage + QStringLiteral(": ") + QObject::tr("Paths beginning with '#' character are not supported in VFS mode."))};
+            return QString{originalErrorMessage + QStringLiteral(": ") + QObject::tr("Paths beginning with '#' character are not supported in VFS mode.")};
         }
     }
     return originalErrorMessage;
@@ -192,7 +183,7 @@ void CALLBACK cfApiFetchDataCallback(const CF_CALLBACK_INFO *callbackInfo, const
     QObject::connect(vfs, &OCC::VfsCfApi::hydrationRequestFailed, &loop, [&](const QString &id) {
         if (requestId == id) {
             hydrationRequestResult = false;
-            qCDebug(lcCfApiWrapper) << "Hydration request failed for" << path << requestId;
+            qCWarning(lcCfApiWrapper) << "Hydration request failed for" << path << requestId;
             loop.quit();
         }
     });
@@ -727,7 +718,7 @@ OCC::Result<OCC::CfApiWrapper::ConnectionKey, QString> OCC::CfApiWrapper::connec
     const qint64 result = CfConnectSyncRoot(p.data(),
                                             cfApiCallbacks,
                                             context,
-                                            CF_CONNECT_FLAG_REQUIRE_PROCESS_INFO | CF_CONNECT_FLAG_REQUIRE_FULL_FILE_PATH,
+                                            CF_CONNECT_FLAG_REQUIRE_PROCESS_INFO | CF_CONNECT_FLAG_REQUIRE_FULL_FILE_PATH | CF_CONNECT_FLAG_BLOCK_SELF_IMPLICIT_HYDRATION,
                                             static_cast<CF_CONNECTION_KEY *>(key.get()));
     Q_ASSERT(result == S_OK);
     if (result != S_OK) {
@@ -788,7 +779,8 @@ OCC::CfApiWrapper::FileHandle OCC::CfApiWrapper::handleForPath(const QString &pa
     }
 
     if (!FileSystem::fileExists(path)) {
-        qCWarning(lcCfApiWrapper) << "file does not exist";
+        qCWarning(lcCfApiWrapper) << "does not exist" << path;
+        Q_ASSERT(false);
         return {};
     }
 

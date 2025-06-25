@@ -1,15 +1,7 @@
 /*
- * Copyright (C) by Olivier Goffart <ogoffart@woboq.com>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
- * for more details.
+ * SPDX-FileCopyrightText: 2018 Nextcloud GmbH and Nextcloud contributors
+ * SPDX-FileCopyrightText: 2015 ownCloud GmbH
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "accountmanager.h"
@@ -254,14 +246,18 @@ bool AccountManager::restoreFromLegacySettings()
     }
 
     ConfigFile configFile;
-    configFile.setVfsEnabled(settings->value(configFile.isVfsEnabledC).toBool());
-    configFile.setLaunchOnSystemStartup(settings->value(configFile.launchOnSystemStartupC).toBool());
-    configFile.setOptionalServerNotifications(settings->value(configFile.optionalServerNotificationsC).toBool());
-    configFile.setPromptDeleteFiles(settings->value(configFile.promptDeleteC).toBool());
-    configFile.setShowCallNotifications(settings->value(configFile.showCallNotificationsC).toBool());
-    configFile.setShowChatNotifications(settings->value(configFile.showChatNotificationsC).toBool());
-    configFile.setShowInExplorerNavigationPane(settings->value(configFile.showInExplorerNavigationPaneC).toBool());
+    configFile.setVfsEnabled(settings->value(ConfigFile::isVfsEnabledC, configFile.isVfsEnabled()).toBool());
+    configFile.setLaunchOnSystemStartup(settings->value(ConfigFile::launchOnSystemStartupC, configFile.launchOnSystemStartup()).toBool());
+    configFile.setOptionalServerNotifications(settings->value(ConfigFile::optionalServerNotificationsC, configFile.optionalServerNotifications()).toBool());
+    configFile.setPromptDeleteFiles(settings->value(ConfigFile::promptDeleteC, configFile.promptDeleteFiles()).toBool());
+    configFile.setShowCallNotifications(settings->value(ConfigFile::showCallNotificationsC, configFile.showCallNotifications()).toBool());
+    configFile.setShowChatNotifications(settings->value(ConfigFile::showChatNotificationsC, configFile.showChatNotifications()).toBool());
+    configFile.setShowInExplorerNavigationPane(settings->value(ConfigFile::showInExplorerNavigationPaneC, configFile.showInExplorerNavigationPane()).toBool());
     ClientProxy().saveProxyConfigurationFromSettings(*settings);
+    configFile.setUseUploadLimit(settings->value(ConfigFile::useUploadLimitC, configFile.useUploadLimit()).toInt());
+    configFile.setUploadLimit(settings->value(ConfigFile::uploadLimitC, configFile.uploadLimit()).toInt());
+    configFile.setUseDownloadLimit(settings->value(ConfigFile::useDownloadLimitC, configFile.useDownloadLimit()).toInt());
+    configFile.setDownloadLimit(settings->value(ConfigFile::downloadLimitC, configFile.downloadLimit()).toInt());
 
     // Try to load the single account.
     if (!settings->childKeys().isEmpty()) {

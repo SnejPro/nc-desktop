@@ -1,15 +1,7 @@
 /*
- * Copyright (C) by Klaas Freitag <freitag@owncloud.com>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
- * for more details.
+ * SPDX-FileCopyrightText: 2018 Nextcloud GmbH and Nextcloud contributors
+ * SPDX-FileCopyrightText: 2014 ownCloud GmbH
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "config.h"
@@ -54,7 +46,6 @@ static constexpr char fullLocalDiscoveryIntervalC[] = "fullLocalDiscoveryInterva
 static constexpr char notificationRefreshIntervalC[] = "notificationRefreshInterval";
 static constexpr char monoIconsC[] = "monoIcons";
 static constexpr char deleteFilesThresholdC[] = "deleteFilesThreshold";
-static constexpr char crashReporterC[] = "crashReporter";
 static constexpr char skipUpdateCheckC[] = "skipUpdateCheck";
 static constexpr char autoUpdateCheckC[] = "autoUpdateCheck";
 static constexpr char updateCheckIntervalC[] = "updateCheckInterval";
@@ -82,11 +73,6 @@ static constexpr char proxyPortC[] = "Proxy/port";
 static constexpr char proxyUserC[] = "Proxy/user";
 static constexpr char proxyPassC[] = "Proxy/pass";
 static constexpr char proxyNeedsAuthC[] = "Proxy/needsAuth";
-
-static constexpr char useUploadLimitC[] = "BWLimit/useUploadLimit";
-static constexpr char useDownloadLimitC[] = "BWLimit/useDownloadLimit";
-static constexpr char uploadLimitC[] = "BWLimit/uploadLimit";
-static constexpr char downloadLimitC[] = "BWLimit/downloadLimit";
 
 static constexpr char newBigFolderSizeLimitC[] = "newBigFolderSizeLimit";
 static constexpr char useNewBigFolderSizeLimitC[] = "useNewBigFolderSizeLimit";
@@ -1093,19 +1079,6 @@ void ConfigFile::setMonoIcons(bool useMonoIcons)
 {
     QSettings settings(configFile(), QSettings::IniFormat);
     settings.setValue(QLatin1String(monoIconsC), useMonoIcons);
-}
-
-bool ConfigFile::crashReporter() const
-{
-    QSettings settings(configFile(), QSettings::IniFormat);
-    const auto fallback = settings.value(QLatin1String(crashReporterC), true);
-    return getPolicySetting(QLatin1String(crashReporterC), fallback).toBool();
-}
-
-void ConfigFile::setCrashReporter(bool enabled)
-{
-    QSettings settings(configFile(), QSettings::IniFormat);
-    settings.setValue(QLatin1String(crashReporterC), enabled);
 }
 
 bool ConfigFile::automaticLogDir() const

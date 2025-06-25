@@ -96,10 +96,26 @@ extension FileProviderExtension: NSFileProviderServicing, ChangeNotificationInte
     }
 
     @objc func setupDomainAccount(
-        user: String, userId: String, serverUrl: String, password: String
+        user: String,
+        userId: String,
+        serverUrl: String,
+        password: String,
+        userAgent: String = "Nextcloud-macOS/FileProviderExt"
     ) {
         let account = Account(user: user, id: userId, serverUrl: serverUrl, password: password)
-        guard account != ncAccount else { return }
+        guard account != ncAccount, user != "", userId != "", serverUrl != "", password != "" else {
+            Logger.fileProviderExtension.warning(
+                """
+                Received repeated or invalid user account details.
+                    user: \(user, privacy: .public)
+                    id: \(userId, privacy: .public),
+                    serverUrl: \(serverUrl, privacy: .public)
+                    password: \(password.isEmpty ? "EMPTY" : "NOT EMPTY", privacy: .public)
+                    ncKitAccount: \(account.ncKitAccount, privacy: .public)
+                """
+            )
+            return
+        }
 
         Task {
             ncKit.appendSession(
@@ -108,7 +124,7 @@ extension FileProviderExtension: NSFileProviderServicing, ChangeNotificationInte
                 user: user,
                 userId: userId,
                 password: password,
-                userAgent: "Nextcloud-macOS/FileProviderExt",
+                userAgent: userAgent,
                 nextcloudVersion: 25,
                 groupIdentifier: ""
             )
@@ -149,6 +165,7 @@ extension FileProviderExtension: NSFileProviderServicing, ChangeNotificationInte
 
             Task { @MainActor in
                 ncAccount = account
+                dbManager = FilesDatabaseManager(account: account)
                 changeObserver = RemoteChangeObserver(
                     account: account,
                     remoteInterface: ncKit,
@@ -166,6 +183,7 @@ extension FileProviderExtension: NSFileProviderServicing, ChangeNotificationInte
             "Received instruction to remove account data for user \(self.ncAccount!.username, privacy: .public) at server \(self.ncAccount!.serverUrl, privacy: .public)"
         )
         ncAccount = nil
+        dbManager = nil
     }
 
     func updatedSyncStateReporting(oldActions: Set<UUID>) {

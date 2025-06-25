@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
- *
- * Copyright (C) by Michael Schuster <michael@schuster.ms>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
- * for more details.
- *
+  - SPDX-FileCopyrightText: 2020 Nextcloud GmbH and Nextcloud contributors
+  - SPDX-License-Identifier: GPL-2.0-or-later
 -->
 <?include $(sys.CURRENTDIR)OEM.wxi?>
 <?include $(sys.CURRENTDIR)Platform.wxi?>
@@ -44,8 +33,10 @@
         https://www.firegiant.com/wix/tutorial/upgrades-and-modularization/replacing-ourselves/
         https://www.joyofsetup.com/2010/01/16/major-upgrades-now-easier-than-ever/
     -->
-    <MajorUpgrade Schedule="afterInstallInitialize" AllowDowngrades="yes" />
-    <Property Id="REINSTALLMODE" Value="amus" />
+    <MajorUpgrade Schedule="afterInstallExecute" AllowDowngrades="yes" />
+    <Property Id="REINSTALLMODE" Value="dmus" />
+    <Property Id="MSIRMSHUTDOWN" Value="1" />
+    <Property Id="REBOOT" Value="ReallySuppress" />
 
     <Media Id="1" Cabinet="$(var.AppShortName).cab" EmbedCab="yes" />
 
@@ -88,9 +79,6 @@
 
         <!-- Uninstall: Cleanup the Registry -->
         <Custom Action="RegistryCleanupCustomAction" After="RemoveFiles">(NOT UPGRADINGPRODUCTCODE) AND (REMOVE="ALL")</Custom>
-
-        <!-- Schedule Reboot for the Shell Extensions (in silent installation mode only, or if SCHEDULE_REBOOT argument is set-->
-        <ScheduleReboot After="InstallFinalize">(SCHEDULE_REBOOT=1) OR NOT (UILevel=2)</ScheduleReboot>
     </InstallExecuteSequence>
 
     <!-- "Add or Remove" Programs Entries -->

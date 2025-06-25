@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: 2021 Nextcloud GmbH and Nextcloud contributors
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 #include "notificationhandler.h"
 #include "usermodel.h"
 #include "common/filesystembase.h"
@@ -908,7 +913,7 @@ void User::slotItemCompleted(const QString &folder, const SyncFileItemPtr &item)
         return;
     }
 
-    qCDebug(lcActivity) << "Item " << item->_file << " retrieved resulted in " << item->_errorString;
+    qCWarning(lcActivity) << "Item " << item->_file << " retrieved resulted in " << item->_errorString;
     processCompletedSyncItem(folderInstance, item);
 }
 

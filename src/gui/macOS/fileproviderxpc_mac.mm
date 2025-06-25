@@ -3,14 +3,21 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
+#include "common/utility.h"
 #include "fileproviderxpc.h"
 
 #include <QLoggingCategory>
+
+#include "csync/csync_exclude.h"
+
+#include "libsync/configfile.h"
 
 #include "gui/accountmanager.h"
 #include "gui/macOS/fileprovider.h"
 #include "gui/macOS/fileproviderdomainmanager.h"
 #include "gui/macOS/fileproviderxpc_mac_utils.h"
+
+#import <Foundation/Foundation.h>
 
 namespace {
     constexpr int64_t semaphoreWaitDelta = 1000000000; // 1 seconds
@@ -60,12 +67,14 @@ void FileProviderXPC::authenticateExtension(const QString &extensionAccountId) c
     NSString *const userId = account->davUser().toNSString();
     NSString *const serverUrl = account->url().toString().toNSString();
     NSString *const password = credentials->password().toNSString();
+    NSString *const userAgent = QString::fromUtf8(Utility::userAgentString()).toNSString();
 
     const auto clientCommService = (NSObject<ClientCommunicationProtocol> *)_clientCommServices.value(extensionAccountId);
     [clientCommService configureAccountWithUser:user
                                          userId:userId
                                       serverUrl:serverUrl
-                                       password:password];
+                                       password:password
+                                      userAgent:userAgent];
 }
 
 void FileProviderXPC::unauthenticateExtension(const QString &extensionAccountId) const
@@ -198,7 +207,7 @@ bool FileProviderXPC::fileProviderExtReachable(const QString &extensionAccountId
     return response;
 }
 
-std::optional<std::pair<bool, bool>> FileProviderXPC::fastEnumerationStateForExtension(const QString &extensionAccountId) const
+std::optional<std::pair<bool, bool>> FileProviderXPC::trashDeletionEnabledStateForExtension(const QString &extensionAccountId) const
 {
     qCInfo(lcFileProviderXPC) << "Checking if fast enumeration is enabled for extension" << extensionAccountId;
     const auto service = (NSObject<ClientCommunicationProtocol> *)_clientCommServices.value(extensionAccountId);
@@ -207,13 +216,13 @@ std::optional<std::pair<bool, bool>> FileProviderXPC::fastEnumerationStateForExt
         return std::nullopt;
     }
 
-    __block BOOL receivedFastEnumerationEnabled; // What is the value of the setting being used by the extension?
-    __block BOOL receivedFastEnumerationSet; // Has the setting been set by the user?
+    __block BOOL receivedTrashDeletionEnabled = YES; // What is the value of the setting being used by the extension?
+    __block BOOL receivedTrashDeletionEnabledSet = NO; // Has the setting been set by the user?
     __block BOOL receivedResponse = NO;
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-    [service getFastEnumerationStateWithCompletionHandler:^(BOOL enabled, BOOL set) {
-        receivedFastEnumerationEnabled = enabled;
-        receivedFastEnumerationSet = set;
+    [service getTrashDeletionEnabledStateWithCompletionHandler:^(BOOL enabled, BOOL set) {
+        receivedTrashDeletionEnabled = enabled;
+        receivedTrashDeletionEnabledSet = set;
         receivedResponse = YES;
         dispatch_semaphore_signal(semaphore);
     }];
@@ -222,14 +231,35 @@ std::optional<std::pair<bool, bool>> FileProviderXPC::fastEnumerationStateForExt
         qCWarning(lcFileProviderXPC) << "Did not receive response for fast enumeration state";
         return std::nullopt;
     }
-    return std::optional<std::pair<bool, bool>>{{receivedFastEnumerationEnabled, receivedFastEnumerationSet}};
+    return std::optional<std::pair<bool, bool>>{{receivedTrashDeletionEnabled, receivedTrashDeletionEnabledSet}};
 }
 
-void FileProviderXPC::setFastEnumerationEnabledForExtension(const QString &extensionAccountId, bool enabled) const
+void FileProviderXPC::setTrashDeletionEnabledForExtension(const QString &extensionAccountId, bool enabled) const
 {
-    qCInfo(lcFileProviderXPC) << "Setting fast enumeration for extension" << extensionAccountId << "to" << enabled;
+    qCInfo(lcFileProviderXPC) << "Setting trash deletion enabled for extension" << extensionAccountId << "to" << enabled;
     const auto service = (NSObject<ClientCommunicationProtocol> *)_clientCommServices.value(extensionAccountId);
-    [service setFastEnumerationEnabled:enabled];
+    [service setTrashDeletionEnabled:enabled];
+}
+
+void FileProviderXPC::setIgnoreList() const
+{
+    ExcludedFiles ignoreList;
+    ConfigFile::setupDefaultExcludeFilePaths(ignoreList);
+    ignoreList.reloadExcludeFiles();
+    const auto qPatterns = ignoreList.activeExcludePatterns();
+    qCInfo(lcFileProviderXPC) << "Updating ignore list with" << qPatterns.size() << "patterns";
+
+    const auto mutableNsPatterns = NSMutableArray.array;
+    for (const auto &pattern : qPatterns) {
+        [mutableNsPatterns addObject:pattern.toNSString()];
+    }
+    NSArray<NSString *> *const nsPatterns = [mutableNsPatterns copy];
+
+    for (const auto &extensionAccountId : _clientCommServices.keys()) {
+        qCInfo(lcFileProviderXPC) << "Updating ignore list for extension" << extensionAccountId;
+        const auto service = (NSObject<ClientCommunicationProtocol> *)_clientCommServices.value(extensionAccountId);
+        [service setIgnoreList:nsPatterns];
+    }
 }
 
 } // namespace OCC::Mac

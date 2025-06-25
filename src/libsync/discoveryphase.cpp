@@ -1,15 +1,7 @@
 /*
- * Copyright (C) by Olivier Goffart <ogoffart@woboq.com>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
- * for more details.
+ * SPDX-FileCopyrightText: 2020 Nextcloud GmbH and Nextcloud contributors
+ * SPDX-FileCopyrightText: 2014 ownCloud GmbH
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "discoveryphase.h"
@@ -180,11 +172,10 @@ QPair<bool, QByteArray> DiscoveryPhase::findAndCancelDeletedJob(const QString &o
             result = true;
             oldEtag = (*it)->_etag;
         } else {
-            if (!(instruction == CSYNC_INSTRUCTION_REMOVE
-                    // re-creation of virtual files count as a delete
-                    || ((*it)->_type == ItemTypeVirtualFile && instruction == CSYNC_INSTRUCTION_NEW)
-                    || ((*it)->_isRestoration && instruction == CSYNC_INSTRUCTION_NEW)))
-            {
+            if (!(instruction == CSYNC_INSTRUCTION_REMOVE ||
+                  instruction == CSYNC_INSTRUCTION_IGNORE ||
+                  ((*it)->_type == ItemTypeVirtualFile && instruction == CSYNC_INSTRUCTION_NEW) ||// re-creation of virtual files count as a delete
+                  ((*it)->_isRestoration && instruction == CSYNC_INSTRUCTION_NEW))) {
                 qCWarning(lcDiscovery) << "ENFORCE(FAILING)" << originalPath;
                 qCWarning(lcDiscovery) << "instruction == CSYNC_INSTRUCTION_REMOVE" << (instruction == CSYNC_INSTRUCTION_REMOVE);
                 qCWarning(lcDiscovery) << "((*it)->_type == ItemTypeVirtualFile && instruction == CSYNC_INSTRUCTION_NEW)"
@@ -417,6 +408,8 @@ void DiscoverySingleDirectoryJob::start()
           << "getlastmodified"
           << "getcontentlength"
           << "getetag"
+          << "quota-available-bytes"
+          << "quota-used-bytes"
           << "http://owncloud.org/ns:size"
           << "http://owncloud.org/ns:id"
           << "http://owncloud.org/ns:fileid"
@@ -481,11 +474,6 @@ SyncFileItem::EncryptionStatus DiscoverySingleDirectoryJob::currentEncryptionSta
 SyncFileItem::EncryptionStatus DiscoverySingleDirectoryJob::requiredEncryptionStatus() const
 {
     return _encryptionStatusRequired;
-}
-
-QByteArray DiscoverySingleDirectoryJob::certificateSha256Fingerprint() const
-{
-    return _e2eCertificateFingerprint;
 }
 
 static void propertyMapToRemoteInfo(const QMap<QString, QString> &map, RemotePermissions::MountedPermissionAlgorithm algorithm, RemoteInfo &result)
@@ -589,6 +577,14 @@ static void propertyMapToRemoteInfo(const QMap<QString, QString> &map, RemotePer
     if (result.isDirectory && map.contains("size")) {
         result.sizeOfFolder = map.value("size").toInt();
     }
+
+    if (result.isDirectory && map.contains("quota-used-bytes")) {
+        result.folderQuota.bytesUsed = map.value("quota-used-bytes").toLongLong();
+    }
+
+    if (result.isDirectory && map.contains("quota-available-bytes")) {
+        result.folderQuota.bytesAvailable = map.value("quota-available-bytes").toLongLong();
+    }
 }
 
 void DiscoverySingleDirectoryJob::directoryListingIteratedSlot(const QString &file, const QMap<QString, QString> &map)
@@ -623,11 +619,22 @@ void DiscoverySingleDirectoryJob::directoryListingIteratedSlot(const QString &fi
         if (map.contains("size")) {
             _size = map.value("size").toInt();
         }
+
+        // all folders will contain both
+        if (map.contains("quota-used-bytes") && map.contains("quota-available-bytes")) {
+            emit setfolderQuota(FolderQuota{map.value("quota-used-bytes").toLongLong(), map.value("quota-available-bytes").toLongLong()});
+        }
     } else {
         RemoteInfo result;
         int slash = file.lastIndexOf('/');
         result.name = file.mid(slash + 1);
         result.size = -1;
+        if (map.contains("quota-used-bytes")) {
+            result.folderQuota.bytesUsed = map.value("quota-used-bytes").toInt();
+        }
+        if (map.contains("quota-available-bytes")) {
+            result.folderQuota.bytesAvailable = map.value("quota-available-bytes").toInt();
+        }
         propertyMapToRemoteInfo(map,
                                 _account->serverHasMountRootProperty() ? RemotePermissions::MountedPermissionAlgorithm::UseMountRootProperty : RemotePermissions::MountedPermissionAlgorithm::WildGuessMountedSubProperty,
                                 result);
@@ -756,7 +763,6 @@ void DiscoverySingleDirectoryJob::metadataReceived(const QJsonDocument &json, in
         }
         _isFileDropDetected = e2EeFolderMetadata->isFileDropPresent();
         _encryptedMetadataNeedUpdate = e2EeFolderMetadata->encryptedMetadataNeedUpdate();
-        _e2eCertificateFingerprint = e2EeFolderMetadata->certificateSha256Fingerprint();
         _encryptionStatusRequired = EncryptionStatusEnums::fromEndToEndEncryptionApiVersion(_account->capabilities().clientSideEncryptionVersion());
         _encryptionStatusCurrent = e2EeFolderMetadata->existingMetadataEncryptionStatus();
 

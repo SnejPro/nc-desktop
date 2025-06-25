@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2020 Nextcloud GmbH and Nextcloud contributors
+# SPDX-FileCopyrightText: 2011 ownCloud GmbH
+# SPDX-License-Identifier: GPL-2.0-or-later
+
 include(DefinePlatformDefaults)
 
 include(nextcloud_add_test.cmake)
@@ -94,6 +98,8 @@ nextcloud_add_test(FileTagModel)
 nextcloud_add_test(SyncConflictsModel)
 nextcloud_add_test(DateFieldBackend)
 nextcloud_add_test(ClientStatusReporting)
+
+nextcloud_add_test(FileSystem)
 
 nextcloud_add_test(FolderStatusModel)
 

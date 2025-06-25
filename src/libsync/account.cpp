@@ -1,15 +1,7 @@
 /*
- * Copyright (C) by Daniel Molkentin <danimo@owncloud.com>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
- * for more details.
+ * SPDX-FileCopyrightText: 2017 Nextcloud GmbH and Nextcloud contributors
+ * SPDX-FileCopyrightText: 2013 ownCloud GmbH
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "account.h"
@@ -177,6 +169,21 @@ QString Account::displayName() const
     }
 
     return displayName;
+}
+
+QString Account::shortcutName() const
+{
+    auto url_part = _url.host();
+    const auto port = url().port();
+    if (port > 0 && port != 80 && port != 443) {
+        url_part.append(QLatin1Char(':'));
+        url_part.append(QString::number(port));
+    }
+
+    auto shortcutName = QStringLiteral("%1 - %2").arg(url_part, prettyName());
+
+
+    return shortcutName;
 }
 
 QString Account::userIdAtHostWithPort() const
@@ -1044,19 +1051,19 @@ bool Account::fileCanBeUnlocked(SyncJournalDb * const journal,
     SyncJournalFileRecord record;
     if (journal->getFileRecord(folderRelativePath, &record)) {
         if (record._lockstate._lockOwnerType == static_cast<int>(SyncFileItem::LockOwnerType::AppLock)) {
-            qCDebug(lcAccount()) << folderRelativePath << "cannot be unlocked: app lock";
+            qCWarning(lcAccount()) << folderRelativePath << "cannot be unlocked: app lock";
             return false;
         }
 
         if (record._lockstate._lockOwnerType == static_cast<int>(SyncFileItem::LockOwnerType::UserLock) &&
             record._lockstate._lockOwnerId != sharedFromThis()->davUser()) {
-            qCDebug(lcAccount()) << folderRelativePath << "cannot be unlocked: user lock from" << record._lockstate._lockOwnerId;
+            qCWarning(lcAccount()) << folderRelativePath << "cannot be unlocked: user lock from" << record._lockstate._lockOwnerId;
             return false;
         }
 
         if (record._lockstate._lockOwnerType == static_cast<int>(SyncFileItem::LockOwnerType::TokenLock) &&
             record._lockstate._lockToken.isEmpty()) {
-            qCDebug(lcAccount()) << folderRelativePath << "cannot be unlocked: token lock without known token";
+            qCWarning(lcAccount()) << folderRelativePath << "cannot be unlocked: token lock without known token";
             return false;
         }
 

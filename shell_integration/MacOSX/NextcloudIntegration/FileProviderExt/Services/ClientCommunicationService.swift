@@ -5,6 +5,7 @@
 
 import Foundation
 import FileProvider
+import NextcloudFileProviderKit
 import OSLog
 
 class ClientCommunicationService: NSObject, NSFileProviderServiceSource, NSXPCListenerDelegate, ClientCommunicationProtocol {
@@ -39,15 +40,21 @@ class ClientCommunicationService: NSObject, NSFileProviderServiceSource, NSXPCLi
         completionHandler(accountUserId, nil)
     }
 
-    func configureAccount(withUser user: String,
-                          userId: String,
-                          serverUrl: String,
-                          password: String) {
+    func configureAccount(
+        withUser user: String,
+        userId: String,
+        serverUrl: String,
+        password: String,
+        userAgent: String
+    ) {
         Logger.desktopClientConnection.info("Received configure account information over client communication service")
-        self.fpExtension.setupDomainAccount(user: user,
-                                            userId: userId,
-                                            serverUrl: serverUrl,
-                                            password: password)
+        self.fpExtension.setupDomainAccount(
+            user: user,
+            userId: userId,
+            serverUrl: serverUrl,
+            password: password,
+            userAgent: userAgent
+        )
     }
 
     func removeAccountConfig() {
@@ -71,28 +78,21 @@ class ClientCommunicationService: NSObject, NSFileProviderServiceSource, NSXPCLi
         }
     }
 
-    func getFastEnumerationState(completionHandler: @escaping (Bool, Bool) -> Void) {
-        let enabled = fpExtension.config.fastEnumerationEnabled
-        let set = fpExtension.config.fastEnumerationSet
+    func getTrashDeletionEnabledState(completionHandler: @escaping (Bool, Bool) -> Void) {
+        let enabled = fpExtension.config.trashDeletionEnabled
+        let set = fpExtension.config.trashDeletionSet
         completionHandler(enabled, set)
     }
 
-    func setFastEnumerationEnabled(_ enabled: Bool) {
-        fpExtension.config.fastEnumerationEnabled = enabled
-        Logger.fileProviderExtension.info("Fast enumeration setting changed to: \(enabled, privacy: .public)")
+    func setTrashDeletionEnabled(_ enabled: Bool) {
+        fpExtension.config.trashDeletionEnabled = enabled
+        Logger.fileProviderExtension.info(
+            "Trash deletion setting changed to: \(enabled, privacy: .public)"
+        )
+    }
 
-        guard enabled else { return }
-        // If enabled, start full enumeration
-        guard let fpManager = NSFileProviderManager(for: fpExtension.domain) else {
-            let domainName = self.fpExtension.domain.displayName
-            Logger.fileProviderExtension.error("Could not get file provider manager for domain \(domainName, privacy: .public), cannot run enumeration after fast enumeration setting change")
-            return
-        }
-
-        fpManager.signalEnumerator(for: .workingSet) { error in
-            if error != nil {
-                Logger.fileProviderExtension.error("Error signalling enumerator for working set, received error: \(error!.localizedDescription, privacy: .public)")
-            }
-        }
+    func setIgnoreList(_ ignoreList: [String]) {
+        self.fpExtension.ignoredFiles = IgnoredFilesMatcher(ignoreList: ignoreList)
+        Logger.fileProviderExtension.info("Ignore list updated.")
     }
 }

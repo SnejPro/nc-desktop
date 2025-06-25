@@ -1,16 +1,7 @@
 /*
- * Copyright (C) by Olivier Goffart <ogoffart@owncloud.com>
- * Copyright (C) by Klaas Freitag <freitag@owncloud.com>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
- * for more details.
+ * SPDX-FileCopyrightText: 2020 Nextcloud GmbH and Nextcloud contributors
+ * SPDX-FileCopyrightText: 2014 ownCloud GmbH
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "account.h"
@@ -107,26 +98,60 @@ void PropagateLocalRemove::start()
     }
 
     QString removeError;
-    if (_moveToTrash && propagator()->syncOptions()._vfs->mode() != OCC::Vfs::WindowsCfApi) {
-        if ((QDir(filename).exists() || FileSystem::fileExists(filename))
-            && !FileSystem::moveToTrash(filename, &removeError)) {
-            done(SyncFileItem::NormalError, tr("Temporary error when removing local item removed from server."), ErrorCategory::GenericError);
-            return;
+    auto moveToTrashIsFeasible = true;
+    if (propagator()->syncOptions()._vfs->mode() != OCC::Vfs::WindowsCfApi) {
+        moveToTrashIsFeasible = false;
+    }
+    const auto fileInfo = QFileInfo{filename};
+    if (fileInfo.isDir()) {
+        try {
+            if (FileSystem::isFolderReadOnly(fileInfo.filesystemAbsolutePath())) {
+                moveToTrashIsFeasible = false;
+            }
+        }
+        catch (const std::filesystem::filesystem_error &e)
+        {
+            qCWarning(lcPropagateLocalRemove) << "exception when checking parent folder read only status" << e.what() << e.path1().c_str() << e.path2().c_str();
+        }
+        catch (const std::system_error &e)
+        {
+            qCWarning(lcPropagateLocalRemove) << "exception when checking parent folder read only status" << e.what();
+        }
+        catch (...)
+        {
+            qCWarning(lcPropagateLocalRemove) << "exception when checking parent folder read only status";
         }
     } else {
-        if (_item->isDirectory()) {
-            if (QDir(filename).exists() && !removeRecursively(QString())) {
+        if (!FileSystem::isWritable(filename, fileInfo)) {
+            moveToTrashIsFeasible = false;
+        }
+    }
+    if (_moveToTrash && moveToTrashIsFeasible) {
+        if (FileSystem::fileExists(filename, fileInfo)) {
+            const auto parentFolderPath = fileInfo.dir().absolutePath();
+            const auto parentPermissionsHandler = FileSystem::FilePermissionsRestore{parentFolderPath, FileSystem::FolderPermissions::ReadWrite};
+
+            if (!FileSystem::moveToTrash(filename, &removeError)) {
+                qCWarning(lcPropagateLocalRemove()) << "move to trash failed" << filename << removeError;
                 done(SyncFileItem::NormalError, tr("Temporary error when removing local item removed from server."), ErrorCategory::GenericError);
                 return;
             }
         } else {
-            if (FileSystem::fileExists(filename)) {
-                const auto fileInfo = QFileInfo{filename};
+            qCWarning(lcPropagateLocalRemove()) << "move to trash failed" << filename << "was already deleted";
+        }
+    } else {
+        if (_item->isDirectory()) {
+            if (FileSystem::fileExists(filename, fileInfo) && !removeRecursively(QString())) {
+                done(SyncFileItem::NormalError, tr("Temporary error when removing local item removed from server."), ErrorCategory::GenericError);
+                return;
+            }
+        } else {
+            if (FileSystem::fileExists(filename, fileInfo)) {
                 const auto parentFolderPath = fileInfo.dir().absolutePath();
-
                 const auto parentPermissionsHandler = FileSystem::FilePermissionsRestore{parentFolderPath, FileSystem::FolderPermissions::ReadWrite};
 
                 if (!FileSystem::remove(filename, &removeError)) {
+                    qCWarning(lcPropagateLocalRemove()) << "remove failed" << filename << removeError;
                     done(SyncFileItem::NormalError, tr("Temporary error when removing local item removed from server."), ErrorCategory::GenericError);
                     return;
                 }

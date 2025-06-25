@@ -1,15 +1,7 @@
 /*
- * Copyright (C) by Klaas Freitag <freitag@owncloud.com>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
- * for more details.
+ * SPDX-FileCopyrightText: 2018 Nextcloud GmbH and Nextcloud contributors
+ * SPDX-FileCopyrightText: 2016 ownCloud GmbH
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "activitylistmodel.h"
@@ -166,7 +158,7 @@ QVariant ActivityListModel::data(const QModelIndex &index, int role) const
             // If this is an E2EE file or folder, pretend we got no path, hiding the share button which is what we want
             if (folder) {
                 SyncJournalFileRecord rec;
-                if (!folder->journalDb()->getFileRecord(fileName.mid(1), &rec)) {
+                if (!folder->journalDb()->getFileRecord(relPath.mid(1), &rec)) {
                     qCWarning(lcActivity) << "could not get file from local DB" << fileName.mid(1);
                 }
                 if (rec.isValid() && (rec.isE2eEncrypted() || !rec._e2eMangledName.isEmpty())) {
@@ -587,7 +579,7 @@ void ActivityListModel::addErrorToActivityList(const Activity &activity, const E
     }
 
     if (shouldAddError) {
-        qCDebug(lcActivity) << "Error successfully added to the notification list: " << type << activity._message << activity._subject << activity._syncResultStatus << activity._syncFileItemStatus;
+        qCWarning(lcActivity) << "Error successfully added to the notification list: " << type << activity._message << activity._subject << activity._syncResultStatus << activity._syncFileItemStatus;
         auto modifiedActivity = activity;
         if (type == ErrorType::NetworkError) {
             modifiedActivity._subject = tr("Network error occurred: client will retry syncing.");
